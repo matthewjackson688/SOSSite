@@ -23,6 +23,19 @@ footer.wrap {
   padding-bottom: 20px;
 }
 
+.header-banner {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+  padding-bottom: 4px;
+}
+
+.header-banner-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* =========================
    Header
    ========================= */
