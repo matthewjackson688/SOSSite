@@ -71,7 +71,7 @@ footer.wrap {
 
 .brand h1 {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.55rem;
   line-height: 1.1;
   font-family: "PT Serif", serif;
   text-transform: uppercase;
@@ -361,7 +361,7 @@ button:not(.dropbtn):hover {
   }
 
   .brand h1 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .home-links {
