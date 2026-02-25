@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap");
+
 :root {
   font-family: system-ui, Arial, sans-serif;
 }
@@ -71,6 +73,8 @@ footer.wrap {
   margin: 0;
   font-size: 1.4rem;
   line-height: 1.1;
+  font-family: "PT Serif", serif;
+  text-transform: uppercase;
 }
 /* Ensure dropdown button aligns with nav links */
 .dropbtn {
