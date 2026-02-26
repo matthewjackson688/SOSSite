@@ -387,8 +387,8 @@ button:not(.dropbtn):hover {
 
 .donate-image {
   display: block;
-  width: 100%;
-  max-width: 700px;
+  width: 50%;
+  max-width: 350px;
   height: auto;
   margin: 14px auto 18px;
   border-radius: 12px;
