@@ -393,3 +393,13 @@ button:not(.dropbtn):hover {
   margin: 14px auto 18px;
   border-radius: 12px;
 }
+
+.donate-links {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.donate-links .home-box {
+  width: 100%;
+  max-width: 520px;
+}
