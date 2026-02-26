@@ -390,7 +390,7 @@ button:not(.dropbtn):hover {
   width: 50%;
   max-width: 350px;
   height: auto;
-  margin: 14px auto 18px;
+  margin: 14px 0 18px auto;
   border-radius: 12px;
 }
 
