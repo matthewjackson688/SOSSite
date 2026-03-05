@@ -36,54 +36,57 @@ body[data-theme="high-contrast"] {
 }
 
 body[data-theme="protanopia-safe"] {
+  background: linear-gradient(180deg, #d9f2ff 0%, #eef8ff 100%);
   --bg: #e7f7ff;
-  --text: #07243a;
+  --text: #06233a;
   --muted: #17445f;
-  --header-bg: #d7f0ff;
-  --link: #0077c8;
+  --header-bg: #c7e9ff;
+  --link: #0057a8;
   --card-bg: #ffffff;
-  --nav-hover: rgba(0, 119, 200, 0.2);
-  --nav-active: rgba(0, 119, 200, 0.34);
+  --nav-hover: rgba(0, 87, 168, 0.2);
+  --nav-active: rgba(0, 87, 168, 0.35);
   --dropdown-bg: #ffffff;
-  --dropdown-hover: rgba(0, 119, 200, 0.14);
+  --dropdown-hover: rgba(0, 87, 168, 0.14);
   --button-bg: #ffffff;
-  --button-hover: #d9f0ff;
-  --button-border: #69abd5;
-  --focus: #005b99;
+  --button-hover: #d8edff;
+  --button-border: #5e9fcc;
+  --focus: #004789;
 }
 
 body[data-theme="deuteranopia-safe"] {
-  --bg: #e8ecff;
-  --text: #121a4a;
-  --muted: #2f3f7a;
-  --header-bg: #dbe2ff;
-  --link: #2746c7;
-  --card-bg: #f6f8ff;
-  --nav-hover: rgba(39, 70, 199, 0.2);
-  --nav-active: rgba(39, 70, 199, 0.34);
-  --dropdown-bg: #f6f8ff;
-  --dropdown-hover: rgba(39, 70, 199, 0.14);
-  --button-bg: #f6f8ff;
-  --button-hover: #dde4ff;
-  --button-border: #8e9fdf;
-  --focus: #1f37a5;
+  background: linear-gradient(180deg, #1a1430 0%, #271c45 100%);
+  --bg: #231a3f;
+  --text: #f5f0ff;
+  --muted: #d2c6f0;
+  --header-bg: #17112b;
+  --link: #8bd0ff;
+  --card-bg: #2f2452;
+  --nav-hover: rgba(139, 208, 255, 0.2);
+  --nav-active: rgba(139, 208, 255, 0.35);
+  --dropdown-bg: #2f2452;
+  --dropdown-hover: rgba(139, 208, 255, 0.18);
+  --button-bg: #3a2b64;
+  --button-hover: #493579;
+  --button-border: #7b68a8;
+  --focus: #9ad8ff;
 }
 
 body[data-theme="tritanopia-safe"] {
+  background: linear-gradient(180deg, #ffe7c2 0%, #fff2df 100%);
   --bg: #fff0de;
-  --text: #3c2409;
-  --muted: #6f4418;
-  --header-bg: #ffe4c5;
-  --link: #b45a00;
+  --text: #3d2408;
+  --muted: #6e4316;
+  --header-bg: #ffdcb0;
+  --link: #a14e00;
   --card-bg: #fff8ef;
-  --nav-hover: rgba(180, 90, 0, 0.2);
-  --nav-active: rgba(180, 90, 0, 0.34);
+  --nav-hover: rgba(161, 78, 0, 0.2);
+  --nav-active: rgba(161, 78, 0, 0.35);
   --dropdown-bg: #fff8ef;
-  --dropdown-hover: rgba(180, 90, 0, 0.14);
+  --dropdown-hover: rgba(161, 78, 0, 0.14);
   --button-bg: #fff8ef;
-  --button-hover: #ffe8cc;
-  --button-border: #d7a36e;
-  --focus: #8f4700;
+  --button-hover: #ffe5c2;
+  --button-border: #cf9a62;
+  --focus: #8e4600;
 }
 
 
