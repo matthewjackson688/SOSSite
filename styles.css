@@ -633,3 +633,9 @@ button:not(.dropbtn):hover {
   margin: 0;
   line-height: 1.5;
 }
+
+.section-break {
+  border: 0;
+  border-top: 1px solid var(--button-border);
+  margin: 16px 0;
+}
