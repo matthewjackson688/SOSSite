@@ -320,6 +320,9 @@ button:not(.dropbtn):hover {
    ========================= */
 .footer {
   text-align: center;
+  white-space: nowrap;
+  width: max-content;
+  max-width: calc(100vw - 20px);
 }
 
 .social-row {
@@ -555,13 +558,15 @@ button:not(.dropbtn):hover {
   top: 10px;
   right: 10px;
   z-index: 4900;
-  min-width: 300px;
   padding: 14px 18px;
   border-radius: 14px;
   border: 1px solid var(--button-border);
   background: var(--card-bg);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
   text-align: center;
+  white-space: nowrap;
+  width: max-content;
+  max-width: calc(100vw - 20px);
 }
 
 #welcomeText {
@@ -598,7 +603,6 @@ button:not(.dropbtn):hover {
 
 @media (max-width: 700px) {
   .welcome-floater {
-    min-width: 220px;
     padding: 10px 12px;
     top: 62px;
     right: 10px;

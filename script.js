@@ -84,6 +84,23 @@ if (welcomeTextEl) {
     "Kugamuchirwa ku #SOS",
   ];
 
+  const floater = welcomeTextEl.closest(".welcome-floater");
+  if (floater) {
+    const computed = window.getComputedStyle(welcomeTextEl);
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    if (ctx) {
+      ctx.font = `${computed.fontStyle} ${computed.fontVariant} ${computed.fontWeight} ${computed.fontSize} / ${computed.lineHeight} ${computed.fontFamily}`;
+      const longest = greetings.reduce((max, phrase) => Math.max(max, ctx.measureText(phrase).width), 0);
+      const floaterStyle = window.getComputedStyle(floater);
+      const padX = parseFloat(floaterStyle.paddingLeft) + parseFloat(floaterStyle.paddingRight);
+      const borderX = parseFloat(floaterStyle.borderLeftWidth) + parseFloat(floaterStyle.borderRightWidth);
+      floater.style.width = `${Math.ceil(longest + padX + borderX + 2)}px`;
+      floater.style.maxWidth = "calc(100vw - 20px)";
+    }
+  }
+
   let greetingIndex = 0;
   setInterval(() => {
     welcomeTextEl.classList.add("welcome-text-swipe");
