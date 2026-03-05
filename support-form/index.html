@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Supporters - Share Our Story</title>
+  <title>Support Form - Share Our Story</title>
   <link rel="stylesheet" href="/SOSSite/styles.css" />
 </head>
 
@@ -21,11 +21,11 @@
       <a href="/SOSSite/contact/">Contact Us</a>
 
       <div class="dropdown">
-        <button class="dropbtn active" type="button">Resources ▾</button>
+        <button class="dropbtn" type="button">Resources ▾</button>
 
         <div class="dropdown-content">
           <a href="/SOSSite/our-stories/">Our Stories</a>
-          <a href="/SOSSite/supporters/" class="active">Supporters</a>
+          <a href="/SOSSite/supporters/">Supporters</a>
           <a href="/SOSSite/media/">Media</a>
           <a href="/SOSSite/publications/">Publications</a>
         </div>
@@ -34,38 +34,44 @@
       <a href="/SOSSite/donate/">Donate</a>
     </nav>
   </header>
+
   <main class="wrap">
     <section class="card supporters-info">
-      <h2>Get Involved and Support Us</h2>
-      <p>
-        Have these stories resonated with you? #SOS is about understanding the direct experience of disability in
-        Africa and Wales. There are several ways you can get involved in and support #SOS.
-      </p>
+      <h2>Support Form</h2>
+      <p>Complete this form and we will receive it by email.</p>
 
-      <ol class="supporters-list" type="i">
-        <li>
-          If you are a disabled person or an organisation run by disabled people, we invite you to join the #SOS
-          WhatsApp chat. <a href="/SOSSite/support-form/?return=supporters/&intent=whatsapp">Click here</a> (form to complete name, phone, and country).
-        </li>
-        <li>
-          Whoever you are, please find us on our current social media outlets: Facebook, LinkedIn, and X.
-          Follow and like to keep up to date.
-        </li>
-        <li>
-          If you are an organisation, we invite you to share your logo on our webpage.
-          <a href="/SOSSite/support-form/?return=supporters/&intent=logo">Click here</a> (form to complete name of organisation, contact email, and country).
-        </li>
-        <li>
-          Get in touch to see how your company/organisation/service could remove barriers and become more disability
-          inclusive. <a href="/SOSSite/support-form/?return=supporters/&intent=inclusive">Click here</a> (form to complete name of organisation, contact email, and country).
-        </li>
-        <li>
-          If you would like to donate funds, materials, or in-kind support, please <a href="/SOSSite/support-form/?return=supporters/&intent=donate">click here</a>
-          (form to complete name of organisation, contact email, and country).
-        </li>
-      </ol>
+      <form id="supportForm" class="support-form" method="POST" action="https://formsubmit.co/matthewjackson688@gmail.com">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" id="formSubject" value="New #SOS support form submission">
+        <input type="hidden" name="_next" id="formNext" value="">
+        <input type="hidden" name="intent" id="formIntent" value="general">
+
+        <label for="fullName">Full Name</label>
+        <input id="fullName" name="full_name" type="text" required>
+
+        <label for="email">Contact Email</label>
+        <input id="email" name="contact_email" type="email" required>
+
+        <label for="phone">Phone</label>
+        <input id="phone" name="phone" type="text">
+
+        <label for="country">Country</label>
+        <input id="country" name="country" type="text" required>
+
+        <label for="organisation">Organisation (if applicable)</label>
+        <input id="organisation" name="organisation" type="text">
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <div class="form-actions">
+          <button type="submit">Submit Form</button>
+          <a id="formBackLink" href="/SOSSite/supporters/">Back</a>
+        </div>
+      </form>
     </section>
   </main>
+
   <footer class="wrap small footer">
     <div class="social-row">
       <a href="mailto:hello@example.com" aria-label="Email">
@@ -91,4 +97,3 @@
   <script src="/SOSSite/script.js"></script>
 </body>
 </html>
-

@@ -662,3 +662,36 @@ button:not(.dropbtn):hover {
   font-weight: 700;
   text-decoration: underline;
 }
+
+.support-form {
+  display: grid;
+  gap: 10px;
+}
+
+.support-form input,
+.support-form textarea {
+  font: inherit;
+  color: var(--text);
+  background: var(--card-bg);
+  border: 1px solid var(--button-border);
+  border-radius: 8px;
+  padding: 9px 10px;
+}
+
+.support-form input:focus-visible,
+.support-form textarea:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.form-actions a {
+  text-decoration: underline;
+  font-weight: 600;
+}

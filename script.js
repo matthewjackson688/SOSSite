@@ -115,3 +115,45 @@ if (welcomeTextEl) {
     }, 360);
   }, 4000);
 }
+
+const supportForm = document.getElementById("supportForm");
+if (supportForm) {
+  const params = new URLSearchParams(window.location.search);
+  const returnPath = params.get("return") || "supporters/";
+  const intent = params.get("intent") || "general";
+
+  const isProjectPath = window.location.pathname.includes("/SOSSite/");
+  const basePrefix = isProjectPath ? "/SOSSite/" : "/";
+
+  const formNext = document.getElementById("formNext");
+  const formSubject = document.getElementById("formSubject");
+  const formIntent = document.getElementById("formIntent");
+  const formBackLink = document.getElementById("formBackLink");
+
+  const normalizedReturn = returnPath.replace(/^\/+/, "");
+  const nextUrl = `${window.location.origin}${basePrefix}${normalizedReturn}`;
+
+  if (formNext) {
+    formNext.value = nextUrl;
+  }
+
+  if (formBackLink) {
+    formBackLink.href = `${basePrefix}${normalizedReturn}`;
+  }
+
+  if (formIntent) {
+    formIntent.value = intent;
+  }
+
+  const subjectByIntent = {
+    whatsapp: "#SOS form: WhatsApp chat join request",
+    logo: "#SOS form: Organisation logo sharing request",
+    inclusive: "#SOS form: Disability inclusion support request",
+    donate: "#SOS form: Donation/in-kind support offer",
+    general: "#SOS form submission",
+  };
+
+  if (formSubject) {
+    formSubject.value = subjectByIntent[intent] || subjectByIntent.general;
+  }
+}
