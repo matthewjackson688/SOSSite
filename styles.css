@@ -639,3 +639,26 @@ button:not(.dropbtn):hover {
   border-top: 1px solid var(--button-border);
   margin: 16px 0;
 }
+
+.supporters-info h2 {
+  margin-bottom: 10px;
+}
+
+.supporters-info > p {
+  margin-top: 0;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.supporters-list {
+  margin: 0;
+  padding-left: 24px;
+  display: grid;
+  gap: 10px;
+  line-height: 1.5;
+}
+
+.supporters-list a {
+  font-weight: 700;
+  text-decoration: underline;
+}
