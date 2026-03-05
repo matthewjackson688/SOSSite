@@ -72,3 +72,26 @@ const savedTheme = localStorage.getItem(THEME_KEY);
 const initialTheme = THEMES.has(savedTheme) ? savedTheme : "default";
 applyTheme(initialTheme);
 createThemeControl(initialTheme);
+
+
+const welcomeTextEl = document.getElementById("welcomeText");
+if (welcomeTextEl) {
+  const greetings = [
+    "Welcome to SOS",
+    "Croeso i SOS",
+    "Karibu SOS",
+    "Barka da zuwa SOS",
+    "Mauya kuSOS",
+  ];
+
+  let greetingIndex = 0;
+  setInterval(() => {
+    welcomeTextEl.classList.add("welcome-text-fade");
+
+    setTimeout(() => {
+      greetingIndex = (greetingIndex + 1) % greetings.length;
+      welcomeTextEl.textContent = greetings[greetingIndex];
+      welcomeTextEl.classList.remove("welcome-text-fade");
+    }, 300);
+  }, 2000);
+}
