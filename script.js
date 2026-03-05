@@ -77,21 +77,24 @@ createThemeControl(initialTheme);
 const welcomeTextEl = document.getElementById("welcomeText");
 if (welcomeTextEl) {
   const greetings = [
-    "Welcome to SOS",
-    "Croeso i SOS",
-    "Karibu SOS",
-    "Barka da zuwa SOS",
-    "Mauya kuSOS",
+    "Welcome to #SOS",
+    "Croeso i #SOS",
+    "Karibu kwenye #SOS",
+    "Sanu da zuwa #SOS",
+    "Kugamuchirwa ku #SOS",
   ];
 
   let greetingIndex = 0;
   setInterval(() => {
-    welcomeTextEl.classList.add("welcome-text-fade");
+    welcomeTextEl.classList.add("welcome-text-swipe");
 
     setTimeout(() => {
       greetingIndex = (greetingIndex + 1) % greetings.length;
       welcomeTextEl.textContent = greetings[greetingIndex];
-      welcomeTextEl.classList.remove("welcome-text-fade");
-    }, 300);
+    }, 180);
+
+    setTimeout(() => {
+      welcomeTextEl.classList.remove("welcome-text-swipe");
+    }, 360);
   }, 2000);
 }
