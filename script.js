@@ -96,5 +96,5 @@ if (welcomeTextEl) {
     setTimeout(() => {
       welcomeTextEl.classList.remove("welcome-text-swipe");
     }, 360);
-  }, 2000);
+  }, 4000);
 }
