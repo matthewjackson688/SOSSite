@@ -96,6 +96,19 @@ body {
   color: var(--text);
 }
 
+h1,
+h2,
+h3,
+p,
+li,
+span,
+label,
+select,
+button,
+a {
+  color: var(--text);
+}
+
 /* =========================
    Layout
    ========================= */
@@ -161,6 +174,7 @@ footer.wrap {
   line-height: 1.1;
   font-family: "PT Serif", serif;
   text-transform: uppercase;
+  color: var(--text);
 }
 /* Ensure dropdown button aligns with nav links */
 .dropbtn {
