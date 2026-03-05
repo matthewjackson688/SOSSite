@@ -491,25 +491,8 @@ button:not(.dropbtn):hover {
 }
 
 
-.a11y-controls {
-  display: inline-flex;
-  align-items: center;
-}
 
-.a11y-controls select {
-  font: inherit;
-  font-size: 0.9rem;
-  color: var(--text);
-  background: var(--card-bg);
-  border: 1px solid var(--button-border);
-  border-radius: 10px;
-  padding: 6px 8px;
-}
 
-.a11y-controls select:focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 2px;
-}
 
 .sr-only {
   position: absolute;
@@ -520,4 +503,32 @@ button:not(.dropbtn):hover {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+
+.theme-floater {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 5000;
+  background: var(--card-bg);
+  border: 1px solid var(--button-border);
+  border-radius: 10px;
+  padding: 6px 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.theme-floater select {
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--card-bg);
+  border: 1px solid var(--button-border);
+  border-radius: 8px;
+  padding: 4px 6px;
+}
+
+.theme-floater select:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
 }
