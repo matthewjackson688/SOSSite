@@ -36,54 +36,54 @@ body[data-theme="high-contrast"] {
 }
 
 body[data-theme="protanopia-safe"] {
-  --bg: #eff4fb;
-  --text: #102236;
-  --muted: #2a435c;
-  --header-bg: #e9f1fb;
-  --link: #0056a8;
+  --bg: #e7f7ff;
+  --text: #07243a;
+  --muted: #17445f;
+  --header-bg: #d7f0ff;
+  --link: #0077c8;
   --card-bg: #ffffff;
-  --nav-hover: rgba(0, 86, 168, 0.14);
-  --nav-active: rgba(0, 86, 168, 0.24);
+  --nav-hover: rgba(0, 119, 200, 0.2);
+  --nav-active: rgba(0, 119, 200, 0.34);
   --dropdown-bg: #ffffff;
-  --dropdown-hover: rgba(0, 86, 168, 0.1);
+  --dropdown-hover: rgba(0, 119, 200, 0.14);
   --button-bg: #ffffff;
-  --button-hover: #e3eefc;
-  --button-border: #8fb1d3;
-  --focus: #0056a8;
+  --button-hover: #d9f0ff;
+  --button-border: #69abd5;
+  --focus: #005b99;
 }
 
 body[data-theme="deuteranopia-safe"] {
-  --bg: #eef0f4;
-  --text: #0f1b2d;
-  --muted: #334860;
-  --header-bg: #e4e8ef;
-  --link: #1c3f72;
-  --card-bg: #f8faff;
-  --nav-hover: rgba(28, 63, 114, 0.14);
-  --nav-active: rgba(28, 63, 114, 0.24);
-  --dropdown-bg: #f8faff;
-  --dropdown-hover: rgba(28, 63, 114, 0.1);
-  --button-bg: #f8faff;
-  --button-hover: #e3e9f3;
-  --button-border: #9aacc4;
-  --focus: #1c3f72;
+  --bg: #e8ecff;
+  --text: #121a4a;
+  --muted: #2f3f7a;
+  --header-bg: #dbe2ff;
+  --link: #2746c7;
+  --card-bg: #f6f8ff;
+  --nav-hover: rgba(39, 70, 199, 0.2);
+  --nav-active: rgba(39, 70, 199, 0.34);
+  --dropdown-bg: #f6f8ff;
+  --dropdown-hover: rgba(39, 70, 199, 0.14);
+  --button-bg: #f6f8ff;
+  --button-hover: #dde4ff;
+  --button-border: #8e9fdf;
+  --focus: #1f37a5;
 }
 
 body[data-theme="tritanopia-safe"] {
-  --bg: #faf4ea;
-  --text: #2f1e10;
-  --muted: #5a3d25;
-  --header-bg: #f7ecdd;
-  --link: #8c4a00;
-  --card-bg: #fffaf4;
-  --nav-hover: rgba(140, 74, 0, 0.14);
-  --nav-active: rgba(140, 74, 0, 0.24);
-  --dropdown-bg: #fffaf4;
-  --dropdown-hover: rgba(140, 74, 0, 0.1);
-  --button-bg: #fffaf4;
-  --button-hover: #f9e8d4;
-  --button-border: #d6b391;
-  --focus: #8c4a00;
+  --bg: #fff0de;
+  --text: #3c2409;
+  --muted: #6f4418;
+  --header-bg: #ffe4c5;
+  --link: #b45a00;
+  --card-bg: #fff8ef;
+  --nav-hover: rgba(180, 90, 0, 0.2);
+  --nav-active: rgba(180, 90, 0, 0.34);
+  --dropdown-bg: #fff8ef;
+  --dropdown-hover: rgba(180, 90, 0, 0.14);
+  --button-bg: #fff8ef;
+  --button-hover: #ffe8cc;
+  --button-border: #d7a36e;
+  --focus: #8f4700;
 }
 
 
