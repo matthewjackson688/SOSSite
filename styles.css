@@ -698,29 +698,22 @@ button:not(.dropbtn):hover {
 
 .thankyou-card {
   text-align: center;
-  display: grid;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-}
-
-.thankyou-card > * {
-  justify-self: center;
 }
 
 .redirect-spinner {
   position: relative;
   width: 92px;
   height: 92px;
-  margin: 10px 0 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: grid;
-  place-items: center;
+  margin: 10px auto 8px;
 }
 
 .redirect-spinner-ring {
-  width: 92px;
-  height: 92px;
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
   border: 6px solid var(--button-border);
   border-top: 6px solid var(--link);
   border-radius: 50%;
@@ -730,15 +723,15 @@ button:not(.dropbtn):hover {
 .redirect-count {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.6rem;
   font-weight: 700;
 }
 
 .redirect-text {
   margin: 0;
-  width: 100%;
   text-align: center;
   font-weight: 600;
 }
