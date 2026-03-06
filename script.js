@@ -151,10 +151,13 @@ if (supportForm) {
     formSubject.value = subjectByIntent[intent] || subjectByIntent.general;
   }
 
-  supportForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
+  const submitButton = document.getElementById("supportSubmitBtn");
+  let isSubmitting = false;
 
-    const submitButton = supportForm.querySelector('button[type="submit"]');
+  const submitSupportForm = async () => {
+    if (isSubmitting) return;
+    isSubmitting = true;
+
     if (submitButton) {
       submitButton.disabled = true;
       submitButton.textContent = "Submitting...";
@@ -178,13 +181,23 @@ if (supportForm) {
       const thankYouUrl = `${basePrefix}thank-you/?return=${encodeURIComponent(normalizedReturn)}`;
       window.location.href = thankYouUrl;
     } catch (error) {
+      isSubmitting = false;
       if (submitButton) {
         submitButton.disabled = false;
         submitButton.textContent = "Submit Form";
       }
       alert("There was a problem sending the form. Please try again.");
     }
+  };
+
+  supportForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    submitSupportForm();
   });
+
+  if (submitButton) {
+    submitButton.addEventListener("click", submitSupportForm);
+  }
 }
 
 

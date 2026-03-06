@@ -40,7 +40,7 @@
       <h2>Support Form</h2>
       <p>Complete this form and we will receive it by email.</p>
 
-      <form id="supportForm" class="support-form" method="POST" action="https://formsubmit.co/matthewjackson688@gmail.com">
+      <form id="supportForm" class="support-form" method="POST" action="https://formsubmit.co/matthewjackson688@gmail.com" onsubmit="return false;">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_subject" id="formSubject" value="New #SOS support form submission">
         <input type="hidden" name="_next" id="formNext" value="https://matthewjackson688.github.io/SOSSite/thank-you/">
@@ -65,7 +65,7 @@
         <textarea id="message" name="message" rows="5" required></textarea>
 
         <div class="form-actions">
-          <button type="submit">Submit Form</button>
+          <button id="supportSubmitBtn" type="button">Submit Form</button>
           <a id="formBackLink" href="supporters/">Back</a>
         </div>
       </form>
