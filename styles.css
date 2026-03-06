@@ -698,6 +698,9 @@ button:not(.dropbtn):hover {
 
 .thankyou-card {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .redirect-spinner {
@@ -705,6 +708,9 @@ button:not(.dropbtn):hover {
   width: 92px;
   height: 92px;
   margin: 10px auto 8px;
+  display: grid;
+  place-items: center;
+  justify-self: center;
 }
 
 .redirect-spinner-ring {

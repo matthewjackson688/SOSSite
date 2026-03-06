@@ -125,7 +125,6 @@ if (supportForm) {
   const isProjectPath = window.location.pathname.includes("/SOSSite/");
   const basePrefix = isProjectPath ? "/SOSSite/" : "/";
 
-  const formNext = document.getElementById("formNext");
   const formSubject = document.getElementById("formSubject");
   const formIntent = document.getElementById("formIntent");
   const formBackLink = document.getElementById("formBackLink");
@@ -151,6 +150,41 @@ if (supportForm) {
   if (formSubject) {
     formSubject.value = subjectByIntent[intent] || subjectByIntent.general;
   }
+
+  supportForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const submitButton = supportForm.querySelector('button[type="submit"]');
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+    }
+
+    const formData = new FormData(supportForm);
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/matthewjackson688@gmail.com", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
+      const thankYouUrl = `${basePrefix}thank-you/?return=${encodeURIComponent(normalizedReturn)}`;
+      window.location.href = thankYouUrl;
+    } catch (error) {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Form";
+      }
+      alert("There was a problem sending the form. Please try again.");
+    }
+  });
 }
 
 
