@@ -131,10 +131,10 @@ if (supportForm) {
   const formBackLink = document.getElementById("formBackLink");
 
   const normalizedReturn = returnPath.replace(/^\/+/, "");
-  const nextUrl = `${window.location.origin}${basePrefix}${normalizedReturn}`;
+  const thankYouUrl = `${window.location.origin}${basePrefix}thank-you/?return=${encodeURIComponent(normalizedReturn)}`;
 
   if (formNext) {
-    formNext.value = nextUrl;
+    formNext.value = thankYouUrl;
   }
 
   if (formBackLink) {
@@ -156,4 +156,32 @@ if (supportForm) {
   if (formSubject) {
     formSubject.value = subjectByIntent[intent] || subjectByIntent.general;
   }
+}
+
+
+const redirectCountdownEl = document.getElementById("redirectCountdown");
+if (redirectCountdownEl) {
+  const targetLink = document.getElementById("thankYouTarget");
+  const params = new URLSearchParams(window.location.search);
+  const returnPath = params.get("return") || "supporters/";
+
+  if (targetLink && params.get("return")) {
+    const isProjectPath = window.location.pathname.includes("/SOSSite/");
+    const basePrefix = isProjectPath ? "/SOSSite/" : "/";
+    targetLink.href = `${basePrefix}${returnPath.replace(/^\/+/, "")}`;
+  }
+
+  let countdown = 3;
+  redirectCountdownEl.textContent = String(countdown);
+
+  const timer = setInterval(() => {
+    countdown -= 1;
+    redirectCountdownEl.textContent = String(Math.max(countdown, 0));
+
+    if (countdown <= 0) {
+      clearInterval(timer);
+      const destination = targetLink ? targetLink.href : "supporters/";
+      window.location.href = destination;
+    }
+  }, 1000);
 }

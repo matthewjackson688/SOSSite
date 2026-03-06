@@ -695,3 +695,43 @@ button:not(.dropbtn):hover {
   text-decoration: underline;
   font-weight: 600;
 }
+
+.thankyou-card {
+  text-align: center;
+}
+
+.redirect-spinner {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  margin: 10px auto 8px;
+}
+
+.redirect-spinner-ring {
+  width: 92px;
+  height: 92px;
+  border: 6px solid var(--button-border);
+  border-top: 6px solid var(--link);
+  border-radius: 50%;
+  animation: spinDial 1s linear infinite;
+}
+
+.redirect-count {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.redirect-text {
+  margin: 0;
+  font-weight: 600;
+}
+
+@keyframes spinDial {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank You - Share Our Story</title>
+  <link rel="stylesheet" href="/SOSSite/styles.css" />
+</head>
+<body>
+  <header class="wrap header">
+    <div class="brand">
+      <img src="/SOSSite/images/SOSLogo.jpg" alt="Site Logo" class="logo">
+      <h1>Share Our Story</h1>
+    </div>
+
+    <nav class="nav">
+      <a href="/SOSSite/">Home</a>
+      <a href="/SOSSite/about/">About Us</a>
+      <a href="/SOSSite/contact/">Contact Us</a>
+
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Resources ▾</button>
+        <div class="dropdown-content">
+          <a href="/SOSSite/our-stories/">Our Stories</a>
+          <a href="/SOSSite/supporters/">Supporters</a>
+          <a href="/SOSSite/media/">Media</a>
+          <a href="/SOSSite/publications/">Publications</a>
+        </div>
+      </div>
+
+      <a href="/SOSSite/donate/">Donate</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="card thankyou-card">
+      <h2>Thank You For Your Input</h2>
+      <div class="redirect-spinner" aria-live="polite">
+        <div class="redirect-spinner-ring"></div>
+        <div id="redirectCountdown" class="redirect-count">3</div>
+      </div>
+      <p class="redirect-text">Redirecting</p>
+      <a id="thankYouTarget" href="/SOSSite/supporters/" class="sr-only">Return target</a>
+    </section>
+  </main>
+
+  <footer class="wrap small footer">
+    <p>© <span id="year"></span> Me</p>
+  </footer>
+
+  <script src="/SOSSite/script.js"></script>
+</body>
+</html>
