@@ -131,11 +131,6 @@ if (supportForm) {
   const formBackLink = document.getElementById("formBackLink");
 
   const normalizedReturn = returnPath.replace(/^\/+/, "");
-  const thankYouUrl = `${window.location.origin}${basePrefix}thank-you/?return=${encodeURIComponent(normalizedReturn)}`;
-
-  if (formNext) {
-    formNext.value = thankYouUrl;
-  }
 
   if (formBackLink) {
     formBackLink.href = `${basePrefix}${normalizedReturn}`;
