@@ -712,6 +712,8 @@ button:not(.dropbtn):hover {
   width: 92px;
   height: 92px;
   margin: 10px 0 8px;
+  left: 50%;
+  transform: translateX(-50%);
   display: grid;
   place-items: center;
 }
@@ -736,6 +738,8 @@ button:not(.dropbtn):hover {
 
 .redirect-text {
   margin: 0;
+  width: 100%;
+  text-align: center;
   font-weight: 600;
 }
 
