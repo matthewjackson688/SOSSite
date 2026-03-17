@@ -571,7 +571,7 @@ button:not(.dropbtn):hover {
 
 #welcomeText {
   display: block;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
   line-height: 1.15;
   color: var(--text);
@@ -609,7 +609,7 @@ button:not(.dropbtn):hover {
   }
 
   #welcomeText {
-    font-size: 1.2rem;
+    font-size: 0.96rem;
   }
 }
 
