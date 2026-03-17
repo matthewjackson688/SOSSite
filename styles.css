@@ -558,7 +558,7 @@ button:not(.dropbtn):hover {
   top: 10px;
   right: 10px;
   z-index: 4900;
-  padding: 14px 18px;
+  padding: 10px 12px;
   border-radius: 14px;
   border: 1px solid var(--button-border);
   background: var(--card-bg);
@@ -571,7 +571,7 @@ button:not(.dropbtn):hover {
 
 #welcomeText {
   display: block;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   font-weight: 700;
   line-height: 1.15;
   color: var(--text);
@@ -603,13 +603,13 @@ button:not(.dropbtn):hover {
 
 @media (max-width: 700px) {
   .welcome-floater {
-    padding: 10px 12px;
+    padding: 8px 10px;
     top: 62px;
     right: 10px;
   }
 
   #welcomeText {
-    font-size: 0.96rem;
+    font-size: 0.9rem;
   }
 }
 
