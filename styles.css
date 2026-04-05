@@ -428,7 +428,7 @@ button:not(.dropbtn):hover {
 }
 
 #africa-map .land {
-  fill: #d6e4f0 !important;
+  fill: #ffffff !important;
   stroke: #ffffff !important;
   transition: fill 0.15s ease;
 }
@@ -436,7 +436,7 @@ button:not(.dropbtn):hover {
 #africa-map .land:hover,
 #africa-map .land:focus,
 #africa-map .land.is-active {
-  fill: #4f8ad9 !important;
+  fill: #000000 !important;
   cursor: pointer;
   outline: none;
 }
