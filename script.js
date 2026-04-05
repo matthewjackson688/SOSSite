@@ -227,3 +227,145 @@ if (redirectCountdownEl) {
     }
   }, 1000);
 }
+
+const africaMap = document.getElementById("africa-map");
+if (africaMap) {
+  const modal = document.getElementById("mapModal");
+  const modalTitle = document.getElementById("mapModalTitle");
+  const modalBody = document.getElementById("mapModalBody");
+  const closeTargets = modal ? modal.querySelectorAll("[data-close='true']") : [];
+
+  const countryNames = {
+    ao: "Angola",
+    bf: "Burkina Faso",
+    bi: "Burundi",
+    bj: "Benin",
+    bw: "Botswana",
+    cd: "Democratic Republic of the Congo",
+    cf: "Central African Republic",
+    cg: "Republic of the Congo",
+    ci: "Cote d'Ivoire",
+    cm: "Cameroon",
+    cv: "Cabo Verde",
+    dj: "Djibouti",
+    dz: "Algeria",
+    eg: "Egypt",
+    eh: "Western Sahara",
+    er: "Eritrea",
+    "es-cn": "Canary Islands",
+    et: "Ethiopia",
+    ga: "Gabon",
+    gh: "Ghana",
+    gm: "Gambia",
+    gn: "Guinea",
+    gq: "Equatorial Guinea",
+    gw: "Guinea-Bissau",
+    ke: "Kenya",
+    km: "Comoros",
+    lr: "Liberia",
+    ls: "Lesotho",
+    ly: "Libya",
+    ma: "Morocco",
+    mg: "Madagascar",
+    ml: "Mali",
+    mr: "Mauritania",
+    mu: "Mauritius",
+    mw: "Malawi",
+    mz: "Mozambique",
+    na: "Namibia",
+    ne: "Niger",
+    ng: "Nigeria",
+    "pt-30": "Madeira",
+    re: "Reunion",
+    rw: "Rwanda",
+    sc: "Seychelles",
+    sd: "Sudan",
+    sh: "Saint Helena",
+    sl: "Sierra Leone",
+    sn: "Senegal",
+    so: "Somalia",
+    ss: "South Sudan",
+    st: "Sao Tome and Principe",
+    sz: "Eswatini",
+    td: "Chad",
+    tg: "Togo",
+    tn: "Tunisia",
+    tz: "Tanzania",
+    ug: "Uganda",
+    yt: "Mayotte",
+    za: "South Africa",
+    zm: "Zambia",
+    zw: "Zimbabwe",
+  };
+
+  let activePath = null;
+  let lastFocus = null;
+
+  const openModal = (name, code, targetEl) => {
+    if (!modal || !modalTitle || !modalBody) return;
+    lastFocus = targetEl || document.activeElement;
+    modalTitle.textContent = name;
+    const codeLabel = code ? code.toUpperCase() : "N/A";
+    modalBody.textContent = `Country code: ${codeLabel}. Details coming soon.`;
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    const closeBtn = modal.querySelector(".map-modal-close");
+    if (closeBtn) closeBtn.focus();
+  };
+
+  const closeModal = () => {
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    if (activePath) activePath.classList.remove("is-active");
+    if (lastFocus && typeof lastFocus.focus === "function") {
+      lastFocus.focus();
+    }
+  };
+
+  if (closeTargets && closeTargets.length) {
+    closeTargets.forEach((target) => {
+      target.addEventListener("click", closeModal);
+    });
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal && modal.classList.contains("is-open")) {
+      closeModal();
+    }
+  });
+
+  const paths = africaMap.querySelectorAll(".land");
+  paths.forEach((path) => {
+    const code = (path.getAttribute("id") || "").toLowerCase();
+    const name = countryNames[code] || code.toUpperCase() || "Country";
+
+    path.setAttribute("tabindex", "0");
+    path.setAttribute("role", "button");
+    path.setAttribute("aria-label", name);
+    path.dataset.country = name;
+
+    const existingTitle = path.querySelector("title");
+    if (existingTitle) {
+      existingTitle.textContent = name;
+    } else {
+      const titleEl = document.createElementNS("http://www.w3.org/2000/svg", "title");
+      titleEl.textContent = name;
+      path.appendChild(titleEl);
+    }
+
+    path.addEventListener("click", () => {
+      if (activePath) activePath.classList.remove("is-active");
+      activePath = path;
+      activePath.classList.add("is-active");
+      openModal(name, code, path);
+    });
+
+    path.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        path.click();
+      }
+    });
+  });
+}
