@@ -419,10 +419,12 @@ button:not(.dropbtn):hover {
 .africa-map-wrap {
   width: 100%;
   overflow: auto;
+  display: flex;
+  justify-content: center;
 }
 
 #africa-map {
-  width: 100%;
+  width: min(100%, 760px);
   height: auto;
   display: block;
 }
