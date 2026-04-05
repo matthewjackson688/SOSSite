@@ -436,6 +436,10 @@ button:not(.dropbtn):hover {
   stroke-width: 0.6;
 }
 
+#africa-map .circle {
+  display: none;
+}
+
 #africa-map .land,
 #africa-map .land * {
   fill: #ffffff !important;
