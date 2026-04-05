@@ -430,7 +430,10 @@ button:not(.dropbtn):hover {
   background: transparent;
 }
 
-#africa-map path {
+#africa-map path,
+#africa-map polygon,
+#africa-map circle,
+#africa-map rect {
   fill: #ffffff !important;
   stroke: #2b2b2b !important;
   stroke-width: 0.6;
@@ -454,21 +457,21 @@ button:not(.dropbtn):hover {
   pointer-events: none;
 }
 
-#africa-map .land:hover,
-#africa-map .land:hover *,
-#africa-map .land:focus,
-#africa-map .land:focus *,
-#africa-map .land.is-active,
-#africa-map .land.is-active * {
-  fill: #000000 !important;
-  stroke: #ffffff !important;
-  cursor: pointer;
-  outline: none;
-}
-
 #africa-map .clickable,
 #africa-map .clickable * {
   pointer-events: all;
+}
+
+#africa-map .clickable:hover,
+#africa-map .clickable:hover *,
+#africa-map .clickable:focus,
+#africa-map .clickable:focus *,
+#africa-map .clickable.is-active,
+#africa-map .clickable.is-active * {
+  fill: #082555 !important;
+  stroke: #082555 !important;
+  cursor: pointer;
+  outline: none;
 }
 
 /* =========================
