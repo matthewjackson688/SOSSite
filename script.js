@@ -335,6 +335,7 @@ if (africaMap) {
     }
   });
 
+  const focusCountries = new Set(["ke", "ls", "zm", "za"]);
   const countryElements = africaMap.querySelectorAll("[id]");
   countryElements.forEach((el) => {
     const code = (el.getAttribute("id") || "").toLowerCase();
@@ -345,32 +346,35 @@ if (africaMap) {
       el.classList.add("land");
     }
 
-    el.setAttribute("tabindex", "0");
-    el.setAttribute("role", "button");
-    el.setAttribute("aria-label", name);
-    el.dataset.country = name;
+    if (focusCountries.has(code)) {
+      el.classList.add("country-focus", "clickable");
+      el.setAttribute("tabindex", "0");
+      el.setAttribute("role", "button");
+      el.setAttribute("aria-label", name);
+      el.dataset.country = name;
 
-    const existingTitle = el.querySelector("title");
-    if (existingTitle) {
-      existingTitle.textContent = name;
-    } else {
-      const titleEl = document.createElementNS("http://www.w3.org/2000/svg", "title");
-      titleEl.textContent = name;
-      el.appendChild(titleEl);
-    }
-
-    el.addEventListener("click", () => {
-      if (activePath) activePath.classList.remove("is-active");
-      activePath = el;
-      activePath.classList.add("is-active");
-      openModal(name, code, el);
-    });
-
-    el.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        el.click();
+      const existingTitle = el.querySelector("title");
+      if (existingTitle) {
+        existingTitle.textContent = name;
+      } else {
+        const titleEl = document.createElementNS("http://www.w3.org/2000/svg", "title");
+        titleEl.textContent = name;
+        el.appendChild(titleEl);
       }
-    });
+
+      el.addEventListener("click", () => {
+        if (activePath) activePath.classList.remove("is-active");
+        activePath = el;
+        activePath.classList.add("is-active");
+        openModal(name, code, el);
+      });
+
+      el.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          el.click();
+        }
+      });
+    }
   });
 }
