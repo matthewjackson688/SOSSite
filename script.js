@@ -336,6 +336,22 @@ if (africaMap) {
   });
 
   const focusCountries = new Set(["ke", "ls", "zm", "za"]);
+  const countryCodes = new Set(Object.keys(countryNames));
+
+  const landElements = africaMap.querySelectorAll(".land");
+  landElements.forEach((el) => {
+    const id = (el.getAttribute("id") || "").toLowerCase();
+    if (id && countryCodes.has(id)) {
+      // Remove the duplicate layer that uses ISO ids.
+      el.remove();
+      return;
+    }
+    const classCode = Array.from(el.classList).find((cls) => countryCodes.has(cls));
+    if (classCode && !id) {
+      el.setAttribute("id", classCode);
+    }
+  });
+
   const countryElements = africaMap.querySelectorAll("[id]");
   countryElements.forEach((el) => {
     const code = (el.getAttribute("id") || "").toLowerCase();
