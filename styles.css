@@ -427,17 +427,28 @@ button:not(.dropbtn):hover {
   width: min(100%, 760px);
   height: auto;
   display: block;
+  background: transparent;
 }
 
-#africa-map .land {
+#africa-map path {
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+#africa-map .land,
+#africa-map .land * {
   fill: #ffffff !important;
   stroke: #ffffff !important;
   transition: fill 0.15s ease;
+  pointer-events: all;
 }
 
 #africa-map .land:hover,
+#africa-map .land:hover *,
 #africa-map .land:focus,
-#africa-map .land.is-active {
+#africa-map .land:focus *,
+#africa-map .land.is-active,
+#africa-map .land.is-active * {
   fill: #000000 !important;
   cursor: pointer;
   outline: none;

@@ -335,36 +335,41 @@ if (africaMap) {
     }
   });
 
-  const paths = africaMap.querySelectorAll(".land");
-  paths.forEach((path) => {
-    const code = (path.getAttribute("id") || "").toLowerCase();
-    const name = countryNames[code] || code.toUpperCase() || "Country";
+  const countryElements = africaMap.querySelectorAll("[id]");
+  countryElements.forEach((el) => {
+    const code = (el.getAttribute("id") || "").toLowerCase();
+    const name = countryNames[code];
+    if (!name) return;
 
-    path.setAttribute("tabindex", "0");
-    path.setAttribute("role", "button");
-    path.setAttribute("aria-label", name);
-    path.dataset.country = name;
+    if (!el.classList.contains("land")) {
+      el.classList.add("land");
+    }
 
-    const existingTitle = path.querySelector("title");
+    el.setAttribute("tabindex", "0");
+    el.setAttribute("role", "button");
+    el.setAttribute("aria-label", name);
+    el.dataset.country = name;
+
+    const existingTitle = el.querySelector("title");
     if (existingTitle) {
       existingTitle.textContent = name;
     } else {
       const titleEl = document.createElementNS("http://www.w3.org/2000/svg", "title");
       titleEl.textContent = name;
-      path.appendChild(titleEl);
+      el.appendChild(titleEl);
     }
 
-    path.addEventListener("click", () => {
+    el.addEventListener("click", () => {
       if (activePath) activePath.classList.remove("is-active");
-      activePath = path;
+      activePath = el;
       activePath.classList.add("is-active");
-      openModal(name, code, path);
+      openModal(name, code, el);
     });
 
-    path.addEventListener("keydown", (event) => {
+    el.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        path.click();
+        el.click();
       }
     });
   });
