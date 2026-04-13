@@ -661,11 +661,10 @@ button:not(.dropbtn):hover {
 }
 
 .welcome-floater {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 4900;
+  position: relative;
+  z-index: 1;
   padding: 10px 12px;
+  margin: 18px auto 0;
   border-radius: 14px;
   border: 1px solid var(--button-border);
   background: var(--card-bg);
@@ -673,7 +672,7 @@ button:not(.dropbtn):hover {
   text-align: center;
   white-space: nowrap;
   width: max-content;
-  max-width: calc(100vw - 20px);
+  max-width: calc(100vw - 40px);
 }
 
 #welcomeText {
@@ -724,8 +723,8 @@ button:not(.dropbtn):hover {
 
   .welcome-floater {
     padding: 8px 10px;
-    top: 62px;
-    right: 10px;
+    margin-top: 14px;
+    max-width: calc(100vw - 24px);
   }
 
   #welcomeText {

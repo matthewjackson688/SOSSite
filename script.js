@@ -298,7 +298,7 @@ if (africaMap) {
     zw: "Zimbabwe",
   };
 
-  let activePath = null;
+  let activeCode = null;
   let lastFocus = null;
 
   const openModal = (name, code, targetEl) => {
@@ -317,7 +317,11 @@ if (africaMap) {
     if (!modal) return;
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
-    if (activePath) activePath.classList.remove("is-active");
+    if (activeCode) {
+      const activeLayers = africaMap.querySelectorAll(`[data-country-code="${activeCode}"]`);
+      activeLayers.forEach((layer) => layer.classList.remove("is-active"));
+      activeCode = null;
+    }
     if (lastFocus && typeof lastFocus.focus === "function") {
       lastFocus.focus();
     }
@@ -335,62 +339,74 @@ if (africaMap) {
     }
   });
 
-  const focusCountries = new Set(["ke", "ls", "zm", "za"]);
   const countryCodes = new Set(Object.keys(countryNames));
+  const countryLayers = new Map();
 
-  const landElements = africaMap.querySelectorAll(".land");
-  landElements.forEach((el) => {
+  const mapElements = africaMap.querySelectorAll(".land, .circle, [id]");
+  mapElements.forEach((el) => {
     const id = (el.getAttribute("id") || "").toLowerCase();
-    if (id && countryCodes.has(id)) {
-      // Remove the duplicate layer that uses ISO ids.
-      el.remove();
-      return;
-    }
     const classCode = Array.from(el.classList).find((cls) => countryCodes.has(cls));
-    if (classCode && !id) {
-      el.setAttribute("id", classCode);
+    const code = countryCodes.has(id) ? id : classCode;
+
+    if (!code) return;
+
+    if (!countryLayers.has(code)) {
+      countryLayers.set(code, []);
     }
-  });
 
-  const countryElements = africaMap.querySelectorAll("[id]");
-  countryElements.forEach((el) => {
-    const code = (el.getAttribute("id") || "").toLowerCase();
-    const name = countryNames[code];
-    if (!name) return;
-
-    if (!el.classList.contains("land")) {
+    if (!el.classList.contains("land") && !el.classList.contains("circle")) {
       el.classList.add("land");
     }
 
-    if (focusCountries.has(code)) {
-      el.classList.add("country-focus", "clickable");
-      el.setAttribute("tabindex", "0");
-      el.setAttribute("role", "button");
-      el.setAttribute("aria-label", name);
-      el.dataset.country = name;
+    el.classList.add("clickable");
+    el.dataset.countryCode = code;
+    countryLayers.get(code).push(el);
+  });
 
-      const existingTitle = el.querySelector("title");
-      if (existingTitle) {
-        existingTitle.textContent = name;
-      } else {
-        const titleEl = document.createElementNS("http://www.w3.org/2000/svg", "title");
-        titleEl.textContent = name;
-        el.appendChild(titleEl);
-      }
-
-      el.addEventListener("click", () => {
-        if (activePath) activePath.classList.remove("is-active");
-        activePath = el;
-        activePath.classList.add("is-active");
-        openModal(name, code, el);
-      });
-
-      el.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          el.click();
-        }
-      });
+  const setActiveCountry = (code) => {
+    if (activeCode) {
+      const previousLayers = countryLayers.get(activeCode) || [];
+      previousLayers.forEach((layer) => layer.classList.remove("is-active"));
     }
+
+    activeCode = code;
+
+    const nextLayers = countryLayers.get(code) || [];
+    nextLayers.forEach((layer) => layer.classList.add("is-active"));
+  };
+
+  countryLayers.forEach((layers, code) => {
+    const name = countryNames[code];
+    const primaryLayer = layers[0];
+
+    layers.forEach((layer) => {
+      layer.setAttribute("aria-label", name);
+      layer.dataset.country = name;
+
+      layer.addEventListener("click", () => {
+        setActiveCountry(code);
+        openModal(name, code, primaryLayer);
+      });
+    });
+
+    primaryLayer.setAttribute("tabindex", "0");
+    primaryLayer.setAttribute("role", "button");
+
+    const existingTitle = primaryLayer.querySelector("title");
+    if (existingTitle) {
+      existingTitle.textContent = name;
+    } else {
+      const titleEl = document.createElementNS("http://www.w3.org/2000/svg", "title");
+      titleEl.textContent = name;
+      primaryLayer.appendChild(titleEl);
+    }
+
+    primaryLayer.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        setActiveCountry(code);
+        openModal(name, code, primaryLayer);
+      }
+    });
   });
 }
