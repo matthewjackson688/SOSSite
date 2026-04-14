@@ -416,6 +416,37 @@ button:not(.dropbtn):hover {
   gap: 12px;
 }
 
+.map-key {
+  display: grid;
+  gap: 6px;
+}
+
+.map-key-title,
+.map-key-item {
+  margin: 0;
+}
+
+.map-key-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.map-key-swatch {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #2b2b2b;
+  flex: 0 0 18px;
+}
+
+.map-key-swatch.established {
+  background: #b9dcff;
+}
+
+.map-key-swatch.pursuing {
+  background: #f1d54a;
+}
+
 .africa-map-wrap {
   width: 100%;
   overflow: auto;
