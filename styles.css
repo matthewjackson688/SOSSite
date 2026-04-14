@@ -443,6 +443,11 @@ button:not(.dropbtn):hover {
   display: none;
 }
 
+#africa-map [id^="path4"],
+#africa-map [id^="g4"] {
+  display: none;
+}
+
 #africa-map .land,
 #africa-map .land * {
   fill: #ffffff !important;
