@@ -433,6 +433,7 @@ button:not(.dropbtn):hover {
 }
 
 .map-key-swatch {
+  display: inline-block;
   width: 18px;
   height: 18px;
   border: 1px solid #2b2b2b;
