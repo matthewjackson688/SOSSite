@@ -339,6 +339,7 @@ if (africaMap) {
     }
   });
 
+  const focusCountries = new Set(["ke", "ls", "zm", "za"]);
   const countryCodes = new Set(Object.keys(countryNames));
   const countryLayers = new Map();
 
@@ -380,6 +381,10 @@ if (africaMap) {
     const primaryLayer = layers[0];
 
     layers.forEach((layer) => {
+      if (focusCountries.has(code)) {
+        layer.classList.add("country-focus");
+      }
+
       layer.setAttribute("aria-label", name);
       layer.dataset.country = name;
 

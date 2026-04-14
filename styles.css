@@ -439,12 +439,6 @@ button:not(.dropbtn):hover {
   stroke-width: 0.6;
 }
 
-#africa-map .country-focus,
-#africa-map .country-focus * {
-  fill: #0b2f6a !important;
-  stroke: #0b2f6a !important;
-}
-
 #africa-map .circle {
   display: none;
 }
@@ -455,6 +449,12 @@ button:not(.dropbtn):hover {
   stroke: #2b2b2b !important;
   transition: fill 0.15s ease;
   pointer-events: none;
+}
+
+#africa-map .land.country-focus,
+#africa-map .land.country-focus * {
+  fill: #b9dcff !important;
+  stroke: #5a8fbe !important;
 }
 
 #africa-map .clickable,
