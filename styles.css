@@ -432,19 +432,20 @@ button:not(.dropbtn):hover {
   gap: 10px;
 }
 
-.map-key-swatch {
-  display: inline-block;
+.map-key-item::before {
+  content: "";
   width: 18px;
   height: 18px;
   border: 1px solid #2b2b2b;
   flex: 0 0 18px;
+  display: inline-block;
 }
 
-.map-key-swatch.established {
+.map-key-item.established-key::before {
   background: #b9dcff;
 }
 
-.map-key-swatch.pursuing {
+.map-key-item.pursuing-key::before {
   background: #f1d54a;
 }
 
