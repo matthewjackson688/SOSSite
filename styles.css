@@ -482,7 +482,7 @@ button:not(.dropbtn):hover {
 }
 
 #africa-map #eg {
-  transform: translate(-4px, 3px);
+  transform: translate(-2px, 3px);
 }
 
 #africa-map .land,
