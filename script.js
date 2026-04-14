@@ -234,6 +234,9 @@ if (africaMap) {
   const modalTitle = document.getElementById("mapModalTitle");
   const modalBody = document.getElementById("mapModalBody");
   const closeTargets = modal ? modal.querySelectorAll("[data-close='true']") : [];
+  const duplicateMapLayers = africaMap.querySelectorAll('[id^="path4"], [id^="g4"]');
+
+  duplicateMapLayers.forEach((layer) => layer.remove());
 
   const countryNames = {
     ao: "Angola",
