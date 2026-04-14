@@ -448,6 +448,10 @@ button:not(.dropbtn):hover {
   display: none;
 }
 
+#africa-map #ly {
+  transform: translate(-4px, 3px);
+}
+
 #africa-map .land,
 #africa-map .land * {
   fill: #ffffff !important;
