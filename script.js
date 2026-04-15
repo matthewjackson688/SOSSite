@@ -342,7 +342,19 @@ if (africaMap) {
     }
   });
 
-  const focusCountries = new Set(["ke", "ls", "zm", "za"]);
+  const focusCountries = new Set([
+    "cf",
+    "gh",
+    "ke",
+    "ls",
+    "ng",
+    "rw",
+    "tz",
+    "ug",
+    "za",
+    "zm",
+    "zw",
+  ]);
   const countryCodes = new Set(Object.keys(countryNames));
   const countryLayers = new Map();
 
