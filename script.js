@@ -355,6 +355,11 @@ if (africaMap) {
     "zm",
     "zw",
   ]);
+  const pursuingCountries = new Set([]);
+  const interactiveCountries = new Set([
+    ...focusCountries,
+    ...pursuingCountries,
+  ]);
   const countryCodes = new Set(Object.keys(countryNames));
   const countryLayers = new Map();
 
@@ -374,7 +379,9 @@ if (africaMap) {
       el.classList.add("land");
     }
 
-    el.classList.add("clickable");
+    if (interactiveCountries.has(code)) {
+      el.classList.add("clickable");
+    }
     el.dataset.countryCode = code;
     countryLayers.get(code).push(el);
   });
@@ -400,17 +407,25 @@ if (africaMap) {
         layer.classList.add("country-focus");
       }
 
+      if (pursuingCountries.has(code)) {
+        layer.classList.add("country-pursuing");
+      }
+
       layer.setAttribute("aria-label", name);
       layer.dataset.country = name;
 
-      layer.addEventListener("click", () => {
-        setActiveCountry(code);
-        openModal(name, code, primaryLayer);
-      });
+      if (interactiveCountries.has(code)) {
+        layer.addEventListener("click", () => {
+          setActiveCountry(code);
+          openModal(name, code, primaryLayer);
+        });
+      }
     });
 
-    primaryLayer.setAttribute("tabindex", "0");
-    primaryLayer.setAttribute("role", "button");
+    if (interactiveCountries.has(code)) {
+      primaryLayer.setAttribute("tabindex", "0");
+      primaryLayer.setAttribute("role", "button");
+    }
 
     const existingTitle = primaryLayer.querySelector("title");
     if (existingTitle) {
@@ -421,12 +436,14 @@ if (africaMap) {
       primaryLayer.appendChild(titleEl);
     }
 
-    primaryLayer.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        setActiveCountry(code);
-        openModal(name, code, primaryLayer);
-      }
-    });
+    if (interactiveCountries.has(code)) {
+      primaryLayer.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          setActiveCountry(code);
+          openModal(name, code, primaryLayer);
+        }
+      });
+    }
   });
 }

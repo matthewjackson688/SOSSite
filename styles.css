@@ -499,6 +499,12 @@ button:not(.dropbtn):hover {
   stroke: #5a8fbe !important;
 }
 
+#africa-map .land.country-pursuing,
+#africa-map .land.country-pursuing * {
+  fill: #f1d54a !important;
+  stroke: #9f8420 !important;
+}
+
 #africa-map .clickable,
 #africa-map .clickable * {
   pointer-events: all;
