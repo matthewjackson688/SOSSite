@@ -308,8 +308,7 @@ if (africaMap) {
     if (!modal || !modalTitle || !modalBody) return;
     lastFocus = targetEl || document.activeElement;
     modalTitle.textContent = name;
-    const codeLabel = code ? code.toUpperCase() : "N/A";
-    modalBody.textContent = `Country code: ${codeLabel}. Details coming soon.`;
+    modalBody.textContent = "Details coming soon.";
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     const closeBtn = modal.querySelector(".map-modal-close");
