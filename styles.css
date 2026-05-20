@@ -19,18 +19,18 @@
 }
 
 body[data-theme="high-contrast"] {
-  --bg: #101010;
-  --text: #ffffff;
-  --muted: #e0e0e0;
-  --header-bg: #101010;
+  --bg: #181818;
+  --text: #d6b000;
+  --muted: #c4a100;
+  --header-bg: #181818;
   --link: #ffd400;
-  --card-bg: #1a1a1a;
+  --card-bg: #222222;
   --nav-hover: rgba(255, 212, 0, 0.18);
   --nav-active: rgba(255, 212, 0, 0.3);
-  --dropdown-bg: #1a1a1a;
+  --dropdown-bg: #222222;
   --dropdown-hover: rgba(255, 255, 255, 0.12);
-  --button-bg: #1f1f1f;
-  --button-hover: #2b2b2b;
+  --button-bg: #282828;
+  --button-hover: #333333;
   --button-border: #666;
   --focus: #ffd400;
 }
