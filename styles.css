@@ -578,6 +578,7 @@ button:not(.dropbtn):hover {
 
 .map-modal-flag {
   flex: 0 0 auto;
+  margin-right: 2px;
   font-size: 1.35em;
   line-height: 1;
 }
