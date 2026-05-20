@@ -301,13 +301,39 @@ if (africaMap) {
     zw: "Zimbabwe",
   };
 
+  const flagOverrides = {
+    "es-cn": "🇪🇸",
+    "pt-30": "🇵🇹",
+  };
+
+  const getFlagEmoji = (code) => {
+    if (flagOverrides[code]) return flagOverrides[code];
+    if (!/^[a-z]{2}$/.test(code)) return "";
+
+    return code
+      .toUpperCase()
+      .split("")
+      .map((letter) => String.fromCodePoint(127397 + letter.charCodeAt(0)))
+      .join("");
+  };
+
   let activeCode = null;
   let lastFocus = null;
 
   const openModal = (name, code, targetEl) => {
     if (!modal || !modalTitle || !modalBody) return;
     lastFocus = targetEl || document.activeElement;
-    modalTitle.textContent = name;
+    const flag = getFlagEmoji(code);
+    const flagEl = document.createElement("span");
+    flagEl.className = "map-modal-flag";
+    flagEl.setAttribute("aria-hidden", "true");
+    flagEl.textContent = flag;
+
+    const nameEl = document.createElement("span");
+    nameEl.textContent = name;
+
+    modalTitle.replaceChildren(flagEl, nameEl);
+    modalTitle.setAttribute("aria-label", name);
     modalBody.textContent = "Details coming soon.";
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");

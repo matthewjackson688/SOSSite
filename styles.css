@@ -563,6 +563,18 @@ button:not(.dropbtn):hover {
   justify-self: start;
 }
 
+.map-modal-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.map-modal-flag {
+  flex: 0 0 auto;
+  font-size: 1.35em;
+  line-height: 1;
+}
+
 /* =========================
    Story list buttons
    ========================= */
