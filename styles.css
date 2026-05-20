@@ -15,15 +15,16 @@
   --button-bg: #fff;
   --button-hover: #f6f6f6;
   --button-border: #ddd;
+  --story-hover-bg: rgb(242, 235, 150);
   --focus: #0b57d0;
 }
 
 body[data-theme="high-contrast"] {
   --bg: #181818;
   --text: #d6b000;
-  --muted: #c4a100;
+  --muted: #d6b000;
   --header-bg: #181818;
-  --link: #ffd400;
+  --link: #d6b000;
   --card-bg: #222222;
   --nav-hover: rgba(255, 212, 0, 0.18);
   --nav-active: rgba(255, 212, 0, 0.3);
@@ -32,6 +33,7 @@ body[data-theme="high-contrast"] {
   --button-bg: #282828;
   --button-hover: #333333;
   --button-border: #666;
+  --story-hover-bg: #333333;
   --focus: #ffd400;
 }
 
@@ -50,6 +52,7 @@ body[data-theme="protanopia-safe"] {
   --button-bg: #ffffff;
   --button-hover: #d8edff;
   --button-border: #5e9fcc;
+  --story-hover-bg: #d8edff;
   --focus: #004789;
 }
 
@@ -68,6 +71,7 @@ body[data-theme="deuteranopia-safe"] {
   --button-bg: #3a2b64;
   --button-hover: #493579;
   --button-border: #7b68a8;
+  --story-hover-bg: #493579;
   --focus: #9ad8ff;
 }
 
@@ -86,6 +90,7 @@ body[data-theme="tritanopia-safe"] {
   --button-bg: #fff8ef;
   --button-hover: #ffe5c2;
   --button-border: #cf9a62;
+  --story-hover-bg: #ffe5c2;
   --focus: #8e4600;
 }
 
@@ -103,6 +108,8 @@ p,
 li,
 span,
 label,
+input,
+textarea,
 select,
 button,
 a {
@@ -610,7 +617,7 @@ button:not(.dropbtn):hover {
 .story-link:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
-  background: rgb(242, 235, 150);
+  background: var(--story-hover-bg);
 }
 
 .story-link:focus-visible {
