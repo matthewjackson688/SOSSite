@@ -669,9 +669,6 @@ button:not(.dropbtn):hover {
   max-width: 350px;
   height: auto;
   margin: 4px 0 12px auto;
-  position: relative;
-  right: 0;
-  transform: translateX(24px);
   border-radius: 12px;
 }
 
