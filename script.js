@@ -10,6 +10,14 @@ if (helloBtn) {
   });
 }
 
+const comingSoonDonationLinks = document.querySelectorAll("[data-coming-soon-donation]");
+comingSoonDonationLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    alert("This donation feature is not implemented yet.");
+  });
+});
+
 const THEME_KEY = "sos-color-mode";
 const THEMES = new Set([
   "default",
