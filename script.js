@@ -49,7 +49,7 @@ function createThemeControl(initialTheme) {
   select.setAttribute("aria-label", "Color mode");
 
   const options = [
-    ["default", "Default"],
+    ["default", "Visual accessibility"],
     ["high-contrast", "High Contrast"],
     ["protanopia-safe", "Protanopia-safe"],
     ["deuteranopia-safe", "Deuteranopia-safe"],
