@@ -167,6 +167,13 @@ footer.wrap {
   display: flex;
   align-items: center;
   gap: 12px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.brand:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
 }
 
 .logo {
