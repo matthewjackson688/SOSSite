@@ -584,6 +584,46 @@ button:not(.dropbtn):hover {
 }
 
 /* =========================
+   Publications
+   ========================= */
+.publication-card {
+  display: grid;
+  gap: 14px;
+}
+
+.publication-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 8px;
+  background: var(--button-bg);
+  border: 1px solid var(--button-border);
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.download-button:hover {
+  background: var(--button-hover);
+}
+
+.publication-viewer {
+  width: 100%;
+  height: min(78vh, 820px);
+  min-height: 560px;
+  border: 1px solid var(--button-border);
+  background: var(--card-bg);
+}
+
+/* =========================
    Story list buttons
    ========================= */
 .story-list {
