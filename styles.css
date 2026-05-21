@@ -722,6 +722,35 @@ button:not(.dropbtn):hover {
   max-width: 520px;
 }
 
+.bank-transfer-box:hover {
+  transform: none;
+}
+
+.bank-details {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.bank-details div {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.42fr) 1fr;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.bank-details dt {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.bank-details dd {
+  margin: 0;
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  overflow-wrap: anywhere;
+}
+
 
 
 
