@@ -741,7 +741,7 @@ button:not(.dropbtn):hover {
 
 .bank-details dt {
   color: var(--muted);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .bank-details dd {
