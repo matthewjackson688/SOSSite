@@ -49,8 +49,7 @@ function createThemeControl(initialTheme) {
   select.setAttribute("aria-label", "Color mode");
 
   const options = [
-    ["", "Visual accessibility"],
-    ["default", "Default"],
+    ["default", "Visual accessability"],
     ["high-contrast", "High Contrast"],
     ["protanopia-safe", "Protanopia-safe"],
     ["deuteranopia-safe", "Deuteranopia-safe"],
@@ -61,11 +60,10 @@ function createThemeControl(initialTheme) {
     const option = document.createElement("option");
     option.value = value;
     option.textContent = text;
-    if (value === "") option.disabled = true;
     select.appendChild(option);
   }
 
-  select.value = localStorage.getItem(THEME_KEY) ? initialTheme : "";
+  select.value = initialTheme;
   select.addEventListener("change", (event) => {
     const nextTheme = event.target.value;
     if (!THEMES.has(nextTheme)) return;
