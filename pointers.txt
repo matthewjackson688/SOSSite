@@ -1,5 +1,4 @@
-kenya, losoto, zimbiya, south africa
-Welcome to #SOS message moved more central.
+
 High contrast text darker yellow and background more pale
 
 map with flags
@@ -16,5 +15,5 @@ integrate
 supporters - logo clickable for website
 response able assistance
 
-leaderboard for donations
+
 
