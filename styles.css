@@ -673,6 +673,14 @@ button:not(.dropbtn):hover {
   outline-offset: 3px;
 }
 
+.story-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 18px 0 12px;
+  border-radius: 8px;
+}
+
 /* =========================
    Responsive tweaks
    ========================= */
