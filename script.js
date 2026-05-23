@@ -49,7 +49,7 @@ function createThemeControl(initialTheme) {
   select.setAttribute("aria-label", "Color mode");
 
   const options = [
-    ["default", "Visual accessability"],
+    ["default", "Default"],
     ["high-contrast", "High Contrast"],
     ["protanopia-safe", "Protanopia-safe"],
     ["deuteranopia-safe", "Deuteranopia-safe"],
@@ -63,16 +63,34 @@ function createThemeControl(initialTheme) {
     select.appendChild(option);
   }
 
+  const selectWrap = document.createElement("div");
+  selectWrap.className = "theme-select-wrap";
+
+  const defaultDisplay = document.createElement("span");
+  defaultDisplay.className = "theme-default-display";
+  defaultDisplay.textContent = "Visual accessibility";
+  defaultDisplay.setAttribute("aria-hidden", "true");
+
+  function updateDefaultDisplay() {
+    const isDefault = select.value === "default";
+    select.classList.toggle("theme-select-default", isDefault);
+    defaultDisplay.hidden = !isDefault;
+  }
+
   select.value = initialTheme;
+  updateDefaultDisplay();
   select.addEventListener("change", (event) => {
     const nextTheme = event.target.value;
     if (!THEMES.has(nextTheme)) return;
     applyTheme(nextTheme);
     localStorage.setItem(THEME_KEY, nextTheme);
+    updateDefaultDisplay();
   });
 
   wrap.appendChild(label);
-  wrap.appendChild(select);
+  selectWrap.appendChild(select);
+  selectWrap.appendChild(defaultDisplay);
+  wrap.appendChild(selectWrap);
   document.body.appendChild(wrap);
 }
 

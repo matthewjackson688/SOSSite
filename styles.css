@@ -786,6 +786,11 @@ button:not(.dropbtn):hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
+.theme-select-wrap {
+  position: relative;
+  display: inline-block;
+}
+
 .theme-floater select {
   font: inherit;
   font-size: 0.9rem;
@@ -794,6 +799,27 @@ button:not(.dropbtn):hover {
   border: 1px solid var(--button-border);
   border-radius: 8px;
   padding: 4px 6px;
+  min-width: 150px;
+}
+
+.theme-floater select.theme-select-default:not(:focus) {
+  color: transparent;
+}
+
+.theme-default-display {
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  max-width: calc(100% - 28px);
+  transform: translateY(-50%);
+  overflow: hidden;
+  pointer-events: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.theme-select-wrap:focus-within .theme-default-display {
+  display: none;
 }
 
 .theme-floater select:focus-visible {
