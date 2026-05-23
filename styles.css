@@ -812,6 +812,7 @@ button:not(.dropbtn):hover {
   top: 50%;
   max-width: calc(100% - 28px);
   transform: translateY(-50%);
+  font-size: 0.82rem;
   overflow: hidden;
   pointer-events: none;
   text-overflow: ellipsis;
