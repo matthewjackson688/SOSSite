@@ -642,7 +642,9 @@ button:not(.dropbtn):hover {
 }
 
 .story-link {
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
   width: auto;
   box-sizing: border-box;
   padding: 14px 16px;
@@ -655,6 +657,27 @@ button:not(.dropbtn):hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
   cursor: pointer;
+}
+
+.story-folder {
+  border-left: 5px solid var(--link);
+  padding-left: 14px;
+}
+
+.story-link-type {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.story-link-title {
+  font-weight: 700;
+}
+
+.story-link-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .story-link:visited {
