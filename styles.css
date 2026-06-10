@@ -949,14 +949,65 @@ button:not(.dropbtn):hover {
   gap: 14px;
 }
 
-.about-list h3 {
-  margin: 0 0 6px;
-  font-size: 1.05rem;
+.about-list {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
 }
 
-.about-list p {
+.accordion-item {
+  border: 1px solid var(--button-border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--card-bg);
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 14px 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  text-align: left;
+}
+
+.accordion-header:hover {
+  background: var(--button-hover);
+}
+
+.accordion-header::after {
+  content: "▸";
+  transition: transform 0.2s ease;
+}
+
+.accordion-item.active .accordion-header::after {
+  transform: rotate(90deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 1000px;
+}
+
+.accordion-content p {
   margin: 0;
-  line-height: 1.5;
+  padding: 0 16px 16px;
+  line-height: 1.6;
 }
 
 .section-break {

@@ -498,3 +498,18 @@ if (africaMap) {
     }
   });
 }
+// About page accordion
+document.querySelectorAll(".accordion-header").forEach((header) => {
+  header.addEventListener("click", () => {
+    const item = header.parentElement;
+    const isOpen = item.classList.contains("active");
+
+    document.querySelectorAll(".accordion-item").forEach((accordion) => {
+      accordion.classList.remove("active");
+    });
+
+    if (!isOpen) {
+      item.classList.add("active");
+    }
+  });
+});
