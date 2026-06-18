@@ -481,7 +481,7 @@ button:not(.dropbtn):hover {
 #africa-map polygon,
 #africa-map circle,
 #africa-map rect {
-  fill: #ffffff !important;
+  fill: #f7fbff !important;
   stroke: #2b2b2b !important;
   stroke-width: 0.6;
 }
@@ -490,8 +490,10 @@ button:not(.dropbtn):hover {
   display: none;
 }
 
-#africa-map [id^="path4"],
-#africa-map [id^="g4"] {
+#africa-map .land[id^="path4"],
+#africa-map .land[id^="g4"],
+#africa-map .circle[id^="path4"],
+#africa-map .circle[id^="g4"] {
   display: none;
 }
 
@@ -501,7 +503,7 @@ button:not(.dropbtn):hover {
 
 #africa-map .land,
 #africa-map .land * {
-  fill: #ffffff !important;
+  fill: #f7fbff !important;
   stroke: #2b2b2b !important;
   transition: fill 0.15s ease;
   pointer-events: none;

@@ -260,7 +260,7 @@ if (africaMap) {
   const modalTitle = document.getElementById("mapModalTitle");
   const modalBody = document.getElementById("mapModalBody");
   const closeTargets = modal ? modal.querySelectorAll("[data-close='true']") : [];
-  const duplicateMapLayers = africaMap.querySelectorAll('[id^="path4"], [id^="g4"]');
+  const duplicateMapLayers = africaMap.querySelectorAll('.land[id^="path4"], .land[id^="g4"], .circle[id^="path4"], .circle[id^="g4"]');
 
   duplicateMapLayers.forEach((layer) => layer.remove());
 
