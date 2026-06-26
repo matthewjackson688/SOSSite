@@ -177,9 +177,14 @@ footer.wrap {
 }
 
 .logo {
-  width: 64px;
+  width: 128px;
   height: auto;
   display: block;
+}
+
+.logo-mark {
+  display: block;
+  flex: 0 0 auto;
 }
 
 .brand h1 {
@@ -722,7 +727,7 @@ button:not(.dropbtn):hover {
   }
 
   .logo {
-    width: 52px;
+    width: 104px;
   }
 
   .brand h1 {
