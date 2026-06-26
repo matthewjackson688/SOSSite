@@ -113,6 +113,7 @@ function normaliseMagnification(value) {
 
 function applyMagnification(value) {
   document.documentElement.style.fontSize = `${value}%`;
+  window.dispatchEvent(new CustomEvent("sos:magnification-change"));
 }
 
 function createMagnificationControl(initialValue) {
@@ -142,10 +143,17 @@ function createMagnificationControl(initialValue) {
   increaseButton.type = "button";
   increaseButton.textContent = "+";
 
+  const resetButton = document.createElement("button");
+  resetButton.className = "magnification-reset";
+  resetButton.type = "button";
+  resetButton.textContent = "Reset";
+  resetButton.setAttribute("aria-label", "Reset magnification to 100%");
+
   function updateControl() {
     valueDisplay.textContent = `${currentValue}%`;
     decreaseButton.disabled = currentValue <= MIN_MAGNIFICATION;
     increaseButton.disabled = currentValue >= MAX_MAGNIFICATION;
+    resetButton.disabled = currentValue === 100;
     decreaseButton.setAttribute(
       "aria-label",
       decreaseButton.disabled
@@ -172,11 +180,17 @@ function createMagnificationControl(initialValue) {
     updateControl();
   });
 
+  resetButton.addEventListener("click", () => {
+    currentValue = 100;
+    updateControl();
+  });
+
   controls.appendChild(decreaseButton);
   controls.appendChild(valueDisplay);
   controls.appendChild(increaseButton);
   wrap.appendChild(label);
   wrap.appendChild(controls);
+  wrap.appendChild(resetButton);
   document.body.appendChild(wrap);
   updateControl();
 }
@@ -198,11 +212,12 @@ if (welcomeTextEl) {
 
   const floater = welcomeTextEl.closest(".welcome-floater");
   if (floater) {
-    const computed = window.getComputedStyle(welcomeTextEl);
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
 
-    if (ctx) {
+    function resizeWelcomeFloater() {
+      if (!ctx) return;
+      const computed = window.getComputedStyle(welcomeTextEl);
       ctx.font = `${computed.fontStyle} ${computed.fontVariant} ${computed.fontWeight} ${computed.fontSize} / ${computed.lineHeight} ${computed.fontFamily}`;
       const longest = greetings.reduce((max, phrase) => Math.max(max, ctx.measureText(phrase).width), 0);
       const floaterStyle = window.getComputedStyle(floater);
@@ -211,6 +226,11 @@ if (welcomeTextEl) {
       floater.style.width = `${Math.ceil(longest + padX + borderX + 2)}px`;
       floater.style.maxWidth = "calc(100vw - 20px)";
     }
+
+    resizeWelcomeFloater();
+    window.addEventListener("sos:magnification-change", () => {
+      window.requestAnimationFrame(resizeWelcomeFloater);
+    });
   }
 
   let greetingIndex = 0;
