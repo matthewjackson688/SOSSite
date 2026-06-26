@@ -827,7 +827,7 @@ button:not(.dropbtn):hover {
   background: var(--card-bg);
   border: 1px solid var(--button-border);
   border-radius: 10px;
-  padding: 6px 8px;
+  padding: 9px 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
@@ -838,13 +838,14 @@ button:not(.dropbtn):hover {
 
 .theme-floater select {
   font: inherit;
-  font-size: 0.9rem;
+  font-size: 1.35rem;
+  font-weight: 700;
   color: var(--text);
   background: var(--card-bg);
   border: 1px solid var(--button-border);
   border-radius: 8px;
-  padding: 4px 6px;
-  min-width: 150px;
+  padding: 6px 9px;
+  min-width: 225px;
 }
 
 .theme-floater select.theme-select-default:not(:focus) {
@@ -853,11 +854,12 @@ button:not(.dropbtn):hover {
 
 .theme-default-display {
   position: absolute;
-  left: 7px;
+  left: 10px;
   top: 50%;
-  max-width: calc(100% - 28px);
+  max-width: calc(100% - 42px);
   transform: translateY(-50%);
-  font-size: 0.82rem;
+  font-size: 1.23rem;
+  font-weight: 700;
   overflow: hidden;
   pointer-events: none;
   text-overflow: ellipsis;
@@ -922,12 +924,13 @@ button:not(.dropbtn):hover {
 
 @media (max-width: 700px) {
   .theme-floater {
-    padding: 5px 7px;
+    padding: 8px 11px;
   }
 
   .theme-floater select {
-    font-size: 0.81rem;
-    padding: 3px 5px;
+    font-size: 1.22rem;
+    padding: 5px 8px;
+    min-width: 210px;
   }
 
   .header {
