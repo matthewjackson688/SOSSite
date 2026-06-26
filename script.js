@@ -99,6 +99,92 @@ const initialTheme = THEMES.has(savedTheme) ? savedTheme : "default";
 applyTheme(initialTheme);
 createThemeControl(initialTheme);
 
+const MAGNIFICATION_KEY = "sos-font-magnification";
+const MIN_MAGNIFICATION = 70;
+const MAX_MAGNIFICATION = 200;
+const MAGNIFICATION_STEP = 10;
+
+function normaliseMagnification(value) {
+  const parsed = Number.parseInt(value, 10);
+  if (!Number.isFinite(parsed)) return 100;
+  const stepped = Math.round(parsed / MAGNIFICATION_STEP) * MAGNIFICATION_STEP;
+  return Math.min(MAX_MAGNIFICATION, Math.max(MIN_MAGNIFICATION, stepped));
+}
+
+function applyMagnification(value) {
+  document.documentElement.style.fontSize = `${value}%`;
+}
+
+function createMagnificationControl(initialValue) {
+  let currentValue = initialValue;
+
+  const wrap = document.createElement("div");
+  wrap.className = "magnification-floater";
+
+  const label = document.createElement("span");
+  label.className = "magnification-label";
+  label.textContent = "Magnification";
+
+  const controls = document.createElement("div");
+  controls.className = "magnification-controls";
+
+  const decreaseButton = document.createElement("button");
+  decreaseButton.className = "magnification-button";
+  decreaseButton.type = "button";
+  decreaseButton.textContent = "-";
+
+  const valueDisplay = document.createElement("span");
+  valueDisplay.className = "magnification-value";
+  valueDisplay.setAttribute("aria-live", "polite");
+
+  const increaseButton = document.createElement("button");
+  increaseButton.className = "magnification-button";
+  increaseButton.type = "button";
+  increaseButton.textContent = "+";
+
+  function updateControl() {
+    valueDisplay.textContent = `${currentValue}%`;
+    decreaseButton.disabled = currentValue <= MIN_MAGNIFICATION;
+    increaseButton.disabled = currentValue >= MAX_MAGNIFICATION;
+    decreaseButton.setAttribute(
+      "aria-label",
+      decreaseButton.disabled
+        ? `Minimum magnification is ${MIN_MAGNIFICATION}%`
+        : `Decrease magnification to ${currentValue - MAGNIFICATION_STEP}%`
+    );
+    increaseButton.setAttribute(
+      "aria-label",
+      increaseButton.disabled
+        ? `Maximum magnification is ${MAX_MAGNIFICATION}%`
+        : `Increase magnification to ${currentValue + MAGNIFICATION_STEP}%`
+    );
+    applyMagnification(currentValue);
+    localStorage.setItem(MAGNIFICATION_KEY, String(currentValue));
+  }
+
+  decreaseButton.addEventListener("click", () => {
+    currentValue = normaliseMagnification(currentValue - MAGNIFICATION_STEP);
+    updateControl();
+  });
+
+  increaseButton.addEventListener("click", () => {
+    currentValue = normaliseMagnification(currentValue + MAGNIFICATION_STEP);
+    updateControl();
+  });
+
+  controls.appendChild(decreaseButton);
+  controls.appendChild(valueDisplay);
+  controls.appendChild(increaseButton);
+  wrap.appendChild(label);
+  wrap.appendChild(controls);
+  document.body.appendChild(wrap);
+  updateControl();
+}
+
+const initialMagnification = normaliseMagnification(localStorage.getItem(MAGNIFICATION_KEY));
+applyMagnification(initialMagnification);
+createMagnificationControl(initialMagnification);
+
 
 const welcomeTextEl = document.getElementById("welcomeText");
 if (welcomeTextEl) {
