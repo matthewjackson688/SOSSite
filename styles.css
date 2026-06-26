@@ -399,6 +399,7 @@ button:not(.dropbtn):hover {
    ========================= */
 .home-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   margin-top: 20px;
 }
@@ -425,6 +426,10 @@ button:not(.dropbtn):hover {
 
 .home-box h3 {
   margin-top: 0;
+}
+
+.home-box-wide {
+  flex: 0 0 100%;
 }
 
 /* =========================
