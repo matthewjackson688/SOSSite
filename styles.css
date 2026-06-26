@@ -407,6 +407,7 @@ button:not(.dropbtn):hover {
 .home-box {
   flex: 1;
   display: block;
+  box-sizing: border-box;
 
   background: var(--card-bg);
   padding: 30px;
