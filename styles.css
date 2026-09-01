@@ -474,6 +474,14 @@ button:not(.dropbtn):hover {
   background: #f1d54a;
 }
 
+.maps-row {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+}
+
 .africa-map-wrap {
   width: 100%;
   overflow: auto;
@@ -482,7 +490,7 @@ button:not(.dropbtn):hover {
 }
 
 #africa-map {
-  width: min(100%, 760px);
+  width: min(100%, 700px);
   height: auto;
   display: block;
   background: transparent;
@@ -550,13 +558,17 @@ button:not(.dropbtn):hover {
 }
 
 .uk-map-wrap {
-  width: 100%;
+  flex: 0 0 120px;
+  width: 120px;
   display: flex;
+  align-items: flex-end;
   justify-content: center;
+  padding-bottom: 4px;
 }
 
 #uk-map {
-  width: min(100%, 460px);
+  width: 120px;
+  height: auto;
   aspect-ratio: 394 / 724;
   display: block;
 }
@@ -750,6 +762,21 @@ button:not(.dropbtn):hover {
 
   .brand h1 {
     font-size: 1.3rem;
+  }
+
+  .maps-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .uk-map-wrap {
+    flex: 0 0 auto;
+    width: 100px;
+    padding-bottom: 0;
+  }
+
+  #uk-map {
+    width: 100px;
   }
 
   .home-links {
