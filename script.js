@@ -738,7 +738,6 @@ if (ukMap) {
   };
 
   ukMap.addEventListener("load", setupUkMap);
-  window.setTimeout(setupUkMap, 0);
 }
 // About page accordion
 document.querySelectorAll(".accordion-header").forEach((header) => {
