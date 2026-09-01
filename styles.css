@@ -560,7 +560,7 @@ button:not(.dropbtn):hover {
 
 .uk-map-wrap {
   flex: 0 0 120px;
-  width: 156px;
+  width: 180px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -568,11 +568,11 @@ button:not(.dropbtn):hover {
 }
 
 #uk-map {
-  width: 156px;
+  width: 180px;
   height: auto;
   aspect-ratio: 394 / 724;
   display: block;
-  transform: translateX(35px);
+  transform: translateX(45px);
 }
 
 /* =========================
