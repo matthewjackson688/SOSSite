@@ -612,10 +612,10 @@ if (ukMap) {
   const modalBody = document.getElementById("mapModalBody");
   const closeTargets = modal ? modal.querySelectorAll("[data-close='true']") : [];
   const countryLayers = [
-    { id: "layer5", code: "england", name: "England", fill: "#f7fbff" },
+    { id: "layer5", code: "england", name: "England", fill: "#b9dcff" },
     { id: "layer1", code: "scotland", name: "Scotland", fill: "#b9dcff" },
-    { id: "layer6", code: "wales", name: "Wales", fill: "#f1d54a" },
-    { id: "layer3", code: "northern-ireland", name: "Northern Ireland", fill: "#d7c7ff" },
+    { id: "layer6", code: "wales", name: "Wales", fill: "#b9dcff" },
+    { id: "layer3", code: "northern-ireland", name: "Northern Ireland", fill: "#b9dcff" },
   ];
 
   let activeCountry = null;
