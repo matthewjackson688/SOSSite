@@ -678,6 +678,13 @@ if (ukMap) {
       svgEl.setAttribute("aria-label", "Map of the United Kingdom by country");
     }
 
+    svgDoc.querySelectorAll("path").forEach((path) => {
+      path.style.fill = "#f7fbff";
+      path.style.stroke = "#2b2b2b";
+      path.style.strokeWidth = "2";
+      path.style.cursor = "default";
+    });
+
     countryLayers.forEach(({ id, code, name, fill }) => {
       const countryEl = svgDoc.getElementById(id);
       if (!countryEl) return;

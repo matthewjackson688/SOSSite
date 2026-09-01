@@ -549,10 +549,6 @@ button:not(.dropbtn):hover {
   outline: none;
 }
 
-.uk-map-card h2 {
-  margin: 0;
-}
-
 .uk-map-wrap {
   width: 100%;
   display: flex;
