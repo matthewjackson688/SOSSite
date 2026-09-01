@@ -604,6 +604,89 @@ if (africaMap) {
     }
   });
 }
+
+const ukMap = document.getElementById("uk-map");
+if (ukMap) {
+  const modal = document.getElementById("mapModal");
+  const modalTitle = document.getElementById("mapModalTitle");
+  const modalBody = document.getElementById("mapModalBody");
+  const closeTargets = modal ? modal.querySelectorAll("[data-close='true']") : [];
+  const countryNames = {
+    england: "England",
+    scotland: "Scotland",
+    wales: "Wales",
+    "northern-ireland": "Northern Ireland",
+  };
+
+  let activeCountry = null;
+  let lastFocus = null;
+
+  const clearActiveCountry = () => {
+    if (activeCountry) {
+      activeCountry.classList.remove("is-active");
+      activeCountry = null;
+    }
+  };
+
+  const openUkModal = (country, targetEl) => {
+    if (!modal || !modalTitle || !modalBody) return;
+    lastFocus = targetEl || document.activeElement;
+    clearActiveCountry();
+    activeCountry = targetEl;
+    activeCountry.classList.add("is-active");
+    modalTitle.textContent = country;
+    modalTitle.setAttribute("aria-label", country);
+    modalBody.textContent = "Details coming soon.";
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    const closeBtn = modal.querySelector(".map-modal-close");
+    if (closeBtn) closeBtn.focus();
+  };
+
+  const closeUkModal = () => {
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    clearActiveCountry();
+    if (lastFocus && typeof lastFocus.focus === "function") {
+      lastFocus.focus();
+    }
+  };
+
+  if (closeTargets && closeTargets.length) {
+    closeTargets.forEach((target) => {
+      target.addEventListener("click", closeUkModal);
+    });
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal && modal.classList.contains("is-open")) {
+      closeUkModal();
+    }
+  });
+
+  ukMap.querySelectorAll(".uk-country").forEach((countryEl) => {
+    const id = countryEl.getAttribute("id");
+    const name = countryNames[id];
+    if (!name) return;
+
+    countryEl.setAttribute("tabindex", "0");
+    countryEl.setAttribute("role", "button");
+    countryEl.setAttribute("aria-label", name);
+
+    const titleEl = document.createElementNS("http://www.w3.org/2000/svg", "title");
+    titleEl.textContent = name;
+    countryEl.appendChild(titleEl);
+
+    countryEl.addEventListener("click", () => openUkModal(name, countryEl));
+    countryEl.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openUkModal(name, countryEl);
+      }
+    });
+  });
+}
 // About page accordion
 document.querySelectorAll(".accordion-header").forEach((header) => {
   header.addEventListener("click", () => {
