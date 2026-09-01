@@ -1063,37 +1063,44 @@ button:not(.dropbtn):hover {
 
 @media (max-width: 700px) {
   .theme-floater {
-    padding: 6px 9px;
+    padding: 4px 6px;
   }
 
   .theme-floater select {
-    font-size: 1.0125rem;
-    padding: 4px 6px;
-    min-width: 188px;
+    font-size: 0.82rem;
+    padding: 3px 5px;
+    min-width: 145px;
+  }
+
+  .theme-default-display {
+    font-size: 0.82rem;
+    left: 6px;
   }
 
   .magnification-floater {
-    padding: 6px 9px;
+    padding: 4px 6px;
+    gap: 4px;
   }
 
   .magnification-label,
   .magnification-value {
-    font-size: 0.95rem;
+    font-size: 0.78rem;
   }
 
   .magnification-controls {
-    grid-template-columns: 1.8rem minmax(3.25rem, auto) 1.8rem;
+    grid-template-columns: 1.5rem minmax(2.7rem, auto) 1.5rem;
+    gap: 4px;
   }
 
   .magnification-button {
-    width: 1.8rem;
-    height: 1.8rem;
-    font-size: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.85rem;
   }
 
   .magnification-reset {
-    font-size: 0.78rem;
-    padding: 4px 7px;
+    font-size: 0.68rem;
+    padding: 3px 5px;
   }
 
   .header {
