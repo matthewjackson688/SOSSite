@@ -561,39 +561,14 @@ button:not(.dropbtn):hover {
 
 #uk-map {
   width: min(100%, 460px);
-  height: auto;
+  aspect-ratio: 394 / 724;
   display: block;
 }
 
-#uk-map .uk-country {
-  stroke: #2b2b2b;
-  stroke-width: 3;
-  transition: fill 0.15s ease, stroke 0.15s ease;
-  cursor: pointer;
-}
-
-#uk-map .uk-country-scotland {
-  fill: #b9dcff;
-}
-
-#uk-map .uk-country-england {
-  fill: #f7fbff;
-}
-
-#uk-map .uk-country-wales {
-  fill: #f1d54a;
-}
-
-#uk-map .uk-country-northern-ireland {
-  fill: #d7c7ff;
-}
-
-#uk-map .uk-country:hover,
-#uk-map .uk-country:focus,
-#uk-map .uk-country.is-active {
-  fill: #082555;
-  stroke: #082555;
-  outline: none;
+.map-credit {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
 }
 
 /* =========================

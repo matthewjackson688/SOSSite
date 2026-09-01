@@ -611,19 +611,22 @@ if (ukMap) {
   const modalTitle = document.getElementById("mapModalTitle");
   const modalBody = document.getElementById("mapModalBody");
   const closeTargets = modal ? modal.querySelectorAll("[data-close='true']") : [];
-  const countryNames = {
-    england: "England",
-    scotland: "Scotland",
-    wales: "Wales",
-    "northern-ireland": "Northern Ireland",
-  };
+  const countryLayers = [
+    { id: "layer5", code: "england", name: "England", fill: "#f7fbff" },
+    { id: "layer1", code: "scotland", name: "Scotland", fill: "#b9dcff" },
+    { id: "layer6", code: "wales", name: "Wales", fill: "#f1d54a" },
+    { id: "layer3", code: "northern-ireland", name: "Northern Ireland", fill: "#d7c7ff" },
+  ];
 
   let activeCountry = null;
   let lastFocus = null;
 
   const clearActiveCountry = () => {
     if (activeCountry) {
-      activeCountry.classList.remove("is-active");
+      activeCountry.querySelectorAll("path").forEach((path) => {
+        path.style.fill = activeCountry.dataset.fill;
+        path.style.stroke = "#2b2b2b";
+      });
       activeCountry = null;
     }
   };
@@ -633,7 +636,10 @@ if (ukMap) {
     lastFocus = targetEl || document.activeElement;
     clearActiveCountry();
     activeCountry = targetEl;
-    activeCountry.classList.add("is-active");
+    activeCountry.querySelectorAll("path").forEach((path) => {
+      path.style.fill = "#082555";
+      path.style.stroke = "#082555";
+    });
     modalTitle.textContent = country;
     modalTitle.setAttribute("aria-label", country);
     modalBody.textContent = "Details coming soon.";
@@ -665,27 +671,70 @@ if (ukMap) {
     }
   });
 
-  ukMap.querySelectorAll(".uk-country").forEach((countryEl) => {
-    const id = countryEl.getAttribute("id");
-    const name = countryNames[id];
-    if (!name) return;
+  const setupUkMap = () => {
+    const svgDoc = ukMap.contentDocument;
+    if (!svgDoc) return;
+    const svgEl = svgDoc.querySelector("svg");
 
-    countryEl.setAttribute("tabindex", "0");
-    countryEl.setAttribute("role", "button");
-    countryEl.setAttribute("aria-label", name);
+    if (svgEl) {
+      svgEl.setAttribute("role", "img");
+      svgEl.setAttribute("aria-label", "Map of the United Kingdom by country");
+    }
 
-    const titleEl = document.createElementNS("http://www.w3.org/2000/svg", "title");
-    titleEl.textContent = name;
-    countryEl.appendChild(titleEl);
+    countryLayers.forEach(({ id, code, name, fill }) => {
+      const countryEl = svgDoc.getElementById(id);
+      if (!countryEl) return;
 
-    countryEl.addEventListener("click", () => openUkModal(name, countryEl));
-    countryEl.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        openUkModal(name, countryEl);
-      }
+      countryEl.id = code;
+      countryEl.dataset.fill = fill;
+      countryEl.setAttribute("tabindex", "0");
+      countryEl.setAttribute("role", "button");
+      countryEl.setAttribute("aria-label", name);
+
+      countryEl.querySelectorAll("path").forEach((path) => {
+        path.style.fill = fill;
+        path.style.stroke = "#2b2b2b";
+        path.style.strokeWidth = "2";
+        path.style.cursor = "pointer";
+        path.style.transition = "fill 0.15s ease, stroke 0.15s ease";
+      });
+
+      const titleEl = svgDoc.createElementNS("http://www.w3.org/2000/svg", "title");
+      titleEl.textContent = name;
+      countryEl.prepend(titleEl);
+
+      countryEl.addEventListener("mouseenter", () => {
+        if (activeCountry === countryEl) return;
+        countryEl.querySelectorAll("path").forEach((path) => {
+          path.style.fill = "#082555";
+          path.style.stroke = "#082555";
+        });
+      });
+
+      countryEl.addEventListener("mouseleave", () => {
+        if (activeCountry === countryEl) return;
+        countryEl.querySelectorAll("path").forEach((path) => {
+          path.style.fill = fill;
+          path.style.stroke = "#2b2b2b";
+        });
+      });
+
+      countryEl.addEventListener("click", () => openUkModal(name, countryEl));
+      countryEl.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openUkModal(name, countryEl);
+        }
+      });
     });
-  });
+
+    const styleEl = svgDoc.createElementNS("http://www.w3.org/2000/svg", "style");
+    styleEl.textContent = "g[role='button']:focus{outline:none}";
+    svgEl.appendChild(styleEl);
+  };
+
+  ukMap.addEventListener("load", setupUkMap);
+  window.setTimeout(setupUkMap, 0);
 }
 // About page accordion
 document.querySelectorAll(".accordion-header").forEach((header) => {
