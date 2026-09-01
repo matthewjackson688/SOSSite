@@ -1078,29 +1078,7 @@ button:not(.dropbtn):hover {
   }
 
   .magnification-floater {
-    padding: 4px 6px;
-    gap: 4px;
-  }
-
-  .magnification-label,
-  .magnification-value {
-    font-size: 0.78rem;
-  }
-
-  .magnification-controls {
-    grid-template-columns: 1.5rem minmax(2.7rem, auto) 1.5rem;
-    gap: 4px;
-  }
-
-  .magnification-button {
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: 0.85rem;
-  }
-
-  .magnification-reset {
-    font-size: 0.68rem;
-    padding: 3px 5px;
+    display: none;
   }
 
   .header {
