@@ -476,6 +476,7 @@ button:not(.dropbtn):hover {
 
 .maps-row {
   width: 100%;
+  flex-direction: row-reverse;
   display: flex;
   align-items: flex-end;
   justify-content: center;
