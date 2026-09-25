@@ -14,9 +14,6 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Install lftp
-        run: sudo apt-get update && sudo apt-get install -y lftp
-
       - name: Deploy to Fasthosts
         env:
           FASthOSTS_SSH_KEY: ${{ secrets.FASthOSTS_SSH_KEY }}
@@ -24,11 +21,10 @@ jobs:
           printf '%s\n' "$FASthOSTS_SSH_KEY" > "$RUNNER_TEMP/deploy_key"
           chmod 600 "$RUNNER_TEMP/deploy_key"
 
-          lftp -e "
-            set sftp:connect-program 'ssh -a -x -i $RUNNER_TEMP/deploy_key -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o PasswordAuthentication=no';
-            set sftp:auto-confirm yes;
-            open sftp://csh3449855@ssh.shareourstory.uk:1022;
-            cd /home/storage/831/4896831/user/htdocs;
-            mirror --reverse --verbose --dry-run --exclude-glob .git/** --exclude-glob .github/** --exclude-glob includes/database-config.php . .;
-            bye
-          "
+          rsync -av --delete \
+            -e "ssh -p 1022 -i $RUNNER_TEMP/deploy_key -o IdentitiesOnly=yes -o PasswordAuthentication=no -o StrictHostKeyChecking=no" \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='includes/database-config.php' \
+            ./ \
+            csh3449855@ssh.shareourstory.uk:/home/storage/831/4896831/user/htdocs/
