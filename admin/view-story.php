@@ -194,24 +194,6 @@ $is_hidden = !$story["published"];
       >
         <img src="../images/instagram-circle.png" alt="Instagram">
       </a>
-
-      <a
-        href="#" data-coming-soon-social="LinkedIn"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn"
-      >
-        <img src="../images/linkedin-circle.png" alt="LinkedIn">
-      </a>
-
-      <a
-        href="#" data-coming-soon-social="Twitter / X"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Twitter / X"
-      >
-        <img src="../images/twitter-circle.png" alt="Twitter / X">
-      </a>
     </div>
   </footer>
 

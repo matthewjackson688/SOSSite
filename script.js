@@ -20,6 +20,10 @@ comingSoonDonationLinks.forEach((link) => {
 
 const comingSoonSocialLinks = document.querySelectorAll("[data-coming-soon-social]");
 comingSoonSocialLinks.forEach((link) => {
+  if (link.getAttribute("href") !== "#") {
+    return;
+  }
+
   link.addEventListener("click", (event) => {
     event.preventDefault();
     alert("We're currently working on creating this page for you, please check again later!");
