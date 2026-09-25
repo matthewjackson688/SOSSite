@@ -107,7 +107,6 @@ const initialTheme = THEMES.has(savedTheme) ? savedTheme : "default";
 applyTheme(initialTheme);
 createThemeControl(initialTheme);
 
-const MAGNIFICATION_KEY = "sos-font-magnification";
 const MIN_MAGNIFICATION = 70;
 const MAX_MAGNIFICATION = 200;
 const MAGNIFICATION_STEP = 10;
@@ -175,7 +174,6 @@ function createMagnificationControl(initialValue) {
         : `Increase magnification to ${currentValue + MAGNIFICATION_STEP}%`
     );
     applyMagnification(currentValue);
-    localStorage.setItem(MAGNIFICATION_KEY, String(currentValue));
   }
 
   decreaseButton.addEventListener("click", () => {
@@ -203,7 +201,7 @@ function createMagnificationControl(initialValue) {
   updateControl();
 }
 
-const initialMagnification = normaliseMagnification(localStorage.getItem(MAGNIFICATION_KEY));
+const initialMagnification = 100;
 applyMagnification(initialMagnification);
 createMagnificationControl(initialMagnification);
 
