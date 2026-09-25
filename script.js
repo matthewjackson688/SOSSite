@@ -517,6 +517,35 @@ if (africaMap) {
     ],
   };
 
+  const representedCountries = [
+    ["wales", "Wales"],
+    ...Object.keys(countryDetails).map((code) => [code, countryNames[code]]),
+  ];
+
+  const leftFlags = document.querySelector(".country-flags-left");
+  const rightFlags = document.querySelector(".country-flags-right");
+
+  const createCountryFlag = ([code, name]) => {
+    const img = document.createElement("img");
+    img.className = "country-flag";
+    img.src = `images/flags/${code}.svg`;
+    img.alt = name;
+    img.title = name;
+    return img;
+  };
+
+  if (leftFlags && rightFlags) {
+    const midpoint = Math.ceil(representedCountries.length / 2);
+
+    representedCountries.slice(0, midpoint).forEach((country) => {
+      leftFlags.appendChild(createCountryFlag(country));
+    });
+
+    representedCountries.slice(midpoint).forEach((country) => {
+      rightFlags.appendChild(createCountryFlag(country));
+    });
+  }
+
   const openModal = (name, code, targetEl) => {
     if (!modal || !modalTitle || !modalBody) return;
     lastFocus = targetEl || document.activeElement;
@@ -852,3 +881,56 @@ document.querySelectorAll(".accordion-header").forEach((header) => {
     }
   });
 });
+
+/* =========================
+   Mobile navigation
+   ========================= */
+(() => {
+  const header = document.querySelector(".header");
+  const nav = document.querySelector(".nav");
+
+  if (!header || !nav || header.querySelector(".mobile-menu-toggle")) {
+    return;
+  }
+
+  const menuButton = document.createElement("button");
+  menuButton.className = "mobile-menu-toggle";
+  menuButton.type = "button";
+  menuButton.setAttribute("aria-label", "Open navigation");
+  menuButton.setAttribute("aria-expanded", "false");
+  menuButton.innerHTML = "<span></span><span></span><span></span>";
+
+  header.insertBefore(menuButton, nav);
+
+  const setMenuState = (open) => {
+    nav.classList.toggle("mobile-open", open);
+    menuButton.classList.toggle("is-open", open);
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute(
+      "aria-label",
+      open ? "Close navigation" : "Open navigation"
+    );
+  };
+
+  menuButton.addEventListener("click", () => {
+    setMenuState(!nav.classList.contains("mobile-open"));
+  });
+
+  const resources = nav.querySelector(".dropdown");
+  const resourcesButton = nav.querySelector(".dropbtn");
+
+  if (resources && resourcesButton) {
+    resourcesButton.setAttribute("aria-expanded", "false");
+
+    resourcesButton.addEventListener("click", () => {
+      const open = resources.classList.toggle("is-open");
+      resourcesButton.setAttribute("aria-expanded", String(open));
+    });
+  }
+
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      setMenuState(false);
+    });
+  });
+})();
