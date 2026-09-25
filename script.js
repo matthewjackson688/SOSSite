@@ -18,6 +18,14 @@ comingSoonDonationLinks.forEach((link) => {
   });
 });
 
+const comingSoonSocialLinks = document.querySelectorAll("[data-coming-soon-social]");
+comingSoonSocialLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    alert("We're currently working on creating this page for you, please check again later!");
+  });
+});
+
 const THEME_KEY = "sos-color-mode";
 const THEMES = new Set([
   "default",
@@ -436,6 +444,7 @@ if (africaMap) {
   const flagOverrides = {
     "es-cn": "🇪🇸",
     "pt-30": "🇵🇹",
+    wales: "🏴\u{E0067}\u{E0062}\u{E0077}\u{E006C}\u{E0073}\u{E007F}",
   };
 
   const getFlagEmoji = (code) => {
@@ -452,6 +461,64 @@ if (africaMap) {
   let activeCode = null;
   let lastFocus = null;
 
+  const countryDetails = {
+    cf: [
+      "Geographical area: 622,984 Square Kilometres",
+      "Population: 5,700,000",
+      "Disabled Population (15% estimate): 855,000",
+    ],
+    gh: [
+      "Geographical area: 238,535 Square Kilometres",
+      "Population: 35,000,000",
+      "Disabled Population (15% estimate): 5,250,000",
+    ],
+    ke: [
+      "Geographical area: 580,367 Square Kilometres",
+      "Population: 58,700,000",
+      "Disabled Population (15% estimate): 8,805,000",
+    ],
+    ls: [
+      "Geographical area: 30,355 Square Kilometres",
+      "Population: 2,390,000",
+      "Disabled Population (15% estimate): 358,500",
+    ],
+    ng: [
+      "Geographical area: 923,769 Square Kilometres",
+      "Population: 242,400,000",
+      "Disabled Population (15% estimate): 36,360,000",
+    ],
+    rw: [
+      "Geographical area: 26,338 Square Kilometres",
+      "Population: 14,900,000",
+      "Disabled Population (15% estimate): 2,235,000",
+    ],
+    tz: [
+      "Geographical area: 947,303 Square Kilometres",
+      "Population: 61,740,000",
+      "Disabled Population (15% estimate): 9,261,000",
+    ],
+    ug: [
+      "Geographical area: 241,553 Square Kilometres",
+      "Population: 52,800,000",
+      "Disabled Population (15% estimate): 7,920,000",
+    ],
+    za: [
+      "Geographical area: 1,221,037 Square Kilometres",
+      "Population: 63,520,000",
+      "Disabled Population (15% estimate): 9,528,000",
+    ],
+    zm: [
+      "Geographical area: 752,618 Square Kilometres",
+      "Population: 22,521,000",
+      "Disabled Population (15% estimate): 3,378,150",
+    ],
+    zw: [
+      "Geographical area: 390,757 Square Kilometres",
+      "Population: 17,273,000",
+      "Disabled Population (15% estimate): 2,590,950",
+    ],
+  };
+
   const openModal = (name, code, targetEl) => {
     if (!modal || !modalTitle || !modalBody) return;
     lastFocus = targetEl || document.activeElement;
@@ -466,7 +533,14 @@ if (africaMap) {
 
     modalTitle.replaceChildren(flagEl, nameEl);
     modalTitle.setAttribute("aria-label", name);
-    modalBody.textContent = "Details coming soon.";
+    const details = countryDetails[code] || ["Details coming soon."];
+    modalBody.replaceChildren(
+      ...details.map((detail) => {
+        const paragraph = document.createElement("p");
+        paragraph.textContent = detail;
+        return paragraph;
+      })
+    );
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     const closeBtn = modal.querySelector(".map-modal-close");
@@ -475,6 +549,8 @@ if (africaMap) {
 
   const closeModal = () => {
     if (!modal) return;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     if (activeCode) {
@@ -483,8 +559,9 @@ if (africaMap) {
       activeCode = null;
     }
     if (lastFocus && typeof lastFocus.focus === "function") {
-      lastFocus.focus();
+      lastFocus.focus({ preventScroll: true });
     }
+    window.scrollTo(scrollX, scrollY);
   };
 
   if (closeTargets && closeTargets.length) {
@@ -637,9 +714,29 @@ if (ukMap) {
       path.style.fill = "#082555";
       path.style.stroke = "#082555";
     });
-    modalTitle.textContent = country;
+    const flagEl = document.createElement("span");
+    flagEl.className = "map-modal-flag";
+    flagEl.setAttribute("aria-hidden", "true");
+    flagEl.textContent = "🏴\u{E0067}\u{E0062}\u{E0077}\u{E006C}\u{E0073}\u{E007F}";
+
+    const nameEl = document.createElement("span");
+    nameEl.textContent = country;
+
+    modalTitle.replaceChildren(flagEl, nameEl);
     modalTitle.setAttribute("aria-label", country);
-    modalBody.textContent = "Details coming soon.";
+
+    const details = [
+      "Geographical area: 20,779 Square Kilometres",
+      "Population: 3,200,000",
+      "Disabled Population (21.1% estimate): 670,000",
+    ];
+    modalBody.replaceChildren(
+      ...details.map((detail) => {
+        const paragraph = document.createElement("p");
+        paragraph.textContent = detail;
+        return paragraph;
+      })
+    );
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     const closeBtn = modal.querySelector(".map-modal-close");
@@ -648,12 +745,15 @@ if (ukMap) {
 
   const closeUkModal = () => {
     if (!modal) return;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     clearActiveCountry();
     if (lastFocus && typeof lastFocus.focus === "function") {
-      lastFocus.focus();
+      lastFocus.focus({ preventScroll: true });
     }
+    window.scrollTo(scrollX, scrollY);
   };
 
   if (closeTargets && closeTargets.length) {

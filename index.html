@@ -5,7 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Share Our Story home page." />
   <title>Home - Share Our Story</title>
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem("sos-color-mode");
+        var themes = ["default", "high-contrast", "protanopia-safe", "deuteranopia-safe", "tritanopia-safe"];
+        if (themes.indexOf(theme) !== -1 && theme !== "default") {
+          document.documentElement.setAttribute("data-sos-theme", theme);
+        }
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="canonical" href="https://shareourstory.uk/">
 </head>
 
 <body>
@@ -1542,20 +1554,20 @@
         <img src="images/facebook-circle.png" alt="Facebook">
       </a>
 
-      <a href="https://instagram.com/yourpage" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <a href="#" data-coming-soon-social="Instagram" aria-label="Instagram">
         <img src="images/instagram-circle.png" alt="Instagram">
       </a>
 
-      <a href="https://linkedin.com/company/yourpage" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <a href="#" data-coming-soon-social="LinkedIn" aria-label="LinkedIn">
         <img src="images/linkedin-circle.png" alt="LinkedIn">
       </a>
 
-      <a href="https://x.com/yourpage" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+      <a href="#" data-coming-soon-social="Twitter / X" aria-label="Twitter / X">
         <img src="images/twitter-circle.png" alt="Twitter / X">
       </a>
     </div>
 
-    <p>© <span id="year"></span> Me</p>
+    <p>© <span id="year"></span> Paul Lindoewood</p>
   </footer>
 
   <div class="map-modal" id="mapModal" role="dialog" aria-modal="true" aria-labelledby="mapModalTitle" aria-hidden="true">

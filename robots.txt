@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /includes/
+
+Sitemap: https://shareourstory.uk/sitemap.xml

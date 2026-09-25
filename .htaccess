@@ -1,0 +1,47 @@
+Options -Indexes
+DirectoryIndex index.php index.html
+
+<FilesMatch "^(database-config\.php|database\.php|auth\.php|story-content\.php)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_mime.c>
+    <FilesMatch "\.(php|php[0-9]?|phtml|phar)$">
+        SetHandler None
+    </FilesMatch>
+</IfModule>
+
+RewriteEngine On
+
+# Old static story/category URLs
+RewriteRule ^disabilities-in-regard-to-health(?:/.*)?$ /our-stories/ [R=301,L]
+RewriteRule ^employment-and-income-generating(?:/.*)?$ /our-stories/ [R=301,L]
+RewriteRule ^understanding-disability(?:/.*)?$ /our-stories/ [R=301,L]
+
+# Old .html versions of current public pages
+RewriteRule ^about\.html$ /about/ [R=301,L]
+RewriteRule ^contact\.html$ /contact/ [R=301,L]
+RewriteRule ^donate\.html$ /donate/ [R=301,L]
+RewriteRule ^media\.html$ /media/ [R=301,L]
+RewriteRule ^publications\.html$ /publications/ [R=301,L]
+RewriteRule ^supporters\.html$ /supporters/ [R=301,L]
+
+# Remaining old .html versions of current public pages
+RewriteRule ^our-stories\.html$ /our-stories/ [R=301,L]
+RewriteRule ^support-form\.html$ /support-form/ [R=301,L]
+RewriteRule ^thank-you\.html$ /thank-you/ [R=301,L]
+
+# Legacy story.php?id=... URLs are redirected by story.php itself.
+
+# XML sitemap
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+# Clean story URLs.
+# Only rewrite paths that are NOT existing files or directories.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-z0-9]+(?:-[a-z0-9]+)*)/?$ story.php?slug=$1 [L,QSA]

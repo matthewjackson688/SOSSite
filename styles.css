@@ -1275,3 +1275,19 @@ button:not(.dropbtn):hover {
     transform: rotate(360deg);
   }
 }
+
+
+/* Folder entries use the same blue left-hand accent as the site design. */
+.story-link.folder-link {
+  border-left: 5px solid #005fcc;
+}
+
+/* Add breathing room between story/folder entries. */
+.story-list li + li {
+  margin-top: 0.75rem;
+}
+
+/* Space between the folder list and the standalone story list. */
+.story-list + .story-list {
+  margin-top: 0.75rem;
+}
