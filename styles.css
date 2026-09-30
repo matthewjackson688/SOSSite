@@ -1451,3 +1451,34 @@ button:not(.dropbtn):hover {
     padding: 10px 14px;
   }
 }
+
+/* =========================
+   Contact page social links
+   ========================= */
+.contact-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.contact-socials p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  min-height: 40px;
+}
+
+.contact-socials p img {
+  width: 40px !important;
+  height: 40px !important;
+  max-width: 40px !important;
+  max-height: 40px !important;
+  object-fit: contain;
+  flex: 0 0 40px;
+}
+
+.contact-socials strong {
+  margin-right: 2px;
+}
