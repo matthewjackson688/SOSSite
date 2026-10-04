@@ -45,8 +45,10 @@ $result = $conn->query(
         <a href="/admin/add-story.php">Add a new story</a>
         &nbsp; | &nbsp;
         <a href="/admin/folders.php">Story Folders</a>
-  &nbsp; | &nbsp;
-  <a href="/admin/supporters.php">Supporters</a>
+        &nbsp; | &nbsp;
+        <a href="/admin/featured-story.php">Featured Story</a>
+        &nbsp; | &nbsp;
+        <a href="/admin/supporters.php">Supporters</a>
         &nbsp; | &nbsp;
         <a href="logout.php">Log out</a>
       </p>

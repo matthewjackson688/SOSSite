@@ -432,14 +432,13 @@ button:not(.dropbtn):hover {
    Home clickable boxes
    ========================= */
 .home-links {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
   margin-top: 20px;
 }
 
 .home-box {
-  flex: 1;
   display: block;
   box-sizing: border-box;
 
@@ -463,8 +462,14 @@ button:not(.dropbtn):hover {
   margin-top: 0;
 }
 
-.home-box-wide {
-  flex: 0 0 100%;
+.home-box-disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.home-box-disabled:hover {
+  transform: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* =========================
@@ -841,7 +846,7 @@ button:not(.dropbtn):hover {
   }
 
   .home-links {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
   .about-content {

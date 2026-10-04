@@ -1,3 +1,51 @@
+<?php
+
+require_once __DIR__ . "/includes/database.php";
+
+$featuredStoryUrl = "";
+
+$settingStmt = $conn->prepare(
+    "SELECT setting_value
+     FROM site_settings
+     WHERE setting_name = 'featured_story_id'
+     LIMIT 1"
+);
+
+if ($settingStmt) {
+    $settingStmt->execute();
+    $settingResult = $settingStmt->get_result();
+
+    if ($settingRow = $settingResult->fetch_assoc()) {
+        $featuredStoryId = trim((string)($settingRow["setting_value"] ?? ""));
+
+        if ($featuredStoryId !== "" && ctype_digit($featuredStoryId)) {
+            $storyStmt = $conn->prepare(
+                "SELECT slug
+                 FROM stories
+                 WHERE id = ?
+                   AND published = TRUE
+                 LIMIT 1"
+            );
+
+            if ($storyStmt) {
+                $storyId = (int)$featuredStoryId;
+                $storyStmt->bind_param("i", $storyId);
+                $storyStmt->execute();
+                $storyResult = $storyStmt->get_result();
+
+                if ($storyRow = $storyResult->fetch_assoc()) {
+                    $featuredStoryUrl = "/" . ltrim($storyRow["slug"], "/") . "/";
+                }
+
+                $storyStmt->close();
+            }
+        }
+    }
+
+    $settingStmt->close();
+}
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,7 +77,7 @@
     </a>
 
     <nav class="nav">
-      <a href="index.html" class="active">Home</a>
+      <a href="./" class="active">Home</a>
       <a href="about/">About Us</a>
       <a href="contact/">Contact Us</a>
 
@@ -61,10 +109,23 @@
       <p>Select a section below:</p>
 
       <div class="home-links">
-        <a href="our-stories/" class="home-box home-box-wide">
+        <a href="our-stories/" class="home-box">
           <h3>Our Stories</h3>
           <p>Read stories and reflections from our community.</p>
         </a>
+
+        <?php if ($featuredStoryUrl !== ""): ?>
+          <a href="<?= htmlspecialchars($featuredStoryUrl, ENT_QUOTES, "UTF-8") ?>" class="home-box">
+            <h3>Featured Story</h3>
+            <p>Discover our featured story of the month.</p>
+          </a>
+        <?php else: ?>
+          <div class="home-box home-box-disabled">
+            <h3>Featured Story</h3>
+            <p>Discover our featured story of the month.</p>
+          </div>
+        <?php endif; ?>
+
         <a href="contact/" class="home-box">
           <h3>Contact Us</h3>
           <p>Get in touch with us.</p>
@@ -74,7 +135,6 @@
           <h3>About Us</h3>
           <p>Learn who we are and what we do.</p>
         </a>
-
       </div>
     </section>
 
